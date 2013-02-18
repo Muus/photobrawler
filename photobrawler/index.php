@@ -1,15 +1,13 @@
-
 <!DOCTYPE html>
 
 <?php 
-include('includes/dbClass.php');
+include('inc/dbClass.php');
 
 $db = new Db();
 
 $db->connector();
 
 ?>
-<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 
@@ -17,14 +15,13 @@ $db->connector();
 	<meta charset="utf-8" />
 
 	<!-- Set the viewport width to device width for mobile -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-	<title>Welcome to Foundation</title>
+	<title>Welcome to PhotoBrawler!</title>
 
 	<!-- Included CSS Files -->
-	<link rel="stylesheet" href="stylesheets/app.css">
-
-	<script src="javascripts/foundation/modernizr.foundation.js"></script>
+	<link rel="stylesheet" href="css/app.css">
+	<script src="js/foundation/modernizr.foundation.js"></script>
 
 </head>
 <body>
@@ -126,46 +123,27 @@ $db->connector();
 	</div>
 
 	<!-- Included JS Files (Uncompressed) -->
-	<script src="javascripts/foundation/jquery.js"></script>
+	<script src="js/foundation/jquery.js"></script>
+	<script src="js/foundation/jquery.cookie.js"></script>
+	<script src="js/foundation/jquery.event.move.js"></script>
+	<script src="js/foundation/jquery.event.swipe.js"></script>
+	<script src="js/foundation/jquery.foundation.accordion.js"></script>
+	<script src="js/foundation/jquery.foundation.alerts.js"></script>
+	<script src="js/foundation/jquery.foundation.buttons.js"></script>
+	<script src="js/foundation/jquery.foundation.clearing.js"></script>
+	<script src="js/foundation/jquery.foundation.forms.js"></script>
+	<script src="js/foundation/jquery.foundation.joyride.js"></script>
+	<script src="js/foundation/jquery.foundation.magellan.js"></script>
+	<script src="js/foundation/jquery.foundation.mediaQueryToggle.js"></script>
+	<script src="js/foundation/jquery.foundation.navigation.js"></script>
+	<script src="js/foundation/jquery.foundation.orbit.js"></script>
+	<script src="js/foundation/jquery.foundation.reveal.js"></script>
+	<script src="js/foundation/jquery.foundation.tabs.js"></script>
+	<script src="js/foundation/jquery.foundation.tooltips.js"></script>
+	<script src="js/foundation/jquery.foundation.topbar.js"></script>
+	<script src="js/foundation/jquery.placeholder.js"></script>
 	
-	<script src="javascripts/foundation/jquery.cookie.js"></script>
-	
-	<script src="javascripts/foundation/jquery.event.move.js"></script>
-	
-	<script src="javascripts/foundation/jquery.event.swipe.js"></script>
-	
-	<script src="javascripts/foundation/jquery.foundation.accordion.js"></script>
-	
-	<script src="javascripts/foundation/jquery.foundation.alerts.js"></script>
-	
-	<script src="javascripts/foundation/jquery.foundation.buttons.js"></script>
-	
-	<script src="javascripts/foundation/jquery.foundation.clearing.js"></script>
-	
-	<script src="javascripts/foundation/jquery.foundation.forms.js"></script>
-	
-	<script src="javascripts/foundation/jquery.foundation.joyride.js"></script>
-	
-	<script src="javascripts/foundation/jquery.foundation.magellan.js"></script>
-	
-	<script src="javascripts/foundation/jquery.foundation.mediaQueryToggle.js"></script>
-	
-	<script src="javascripts/foundation/jquery.foundation.navigation.js"></script>
-	
-	<script src="javascripts/foundation/jquery.foundation.orbit.js"></script>
-	
-	<script src="javascripts/foundation/jquery.foundation.reveal.js"></script>
-	
-	<script src="javascripts/foundation/jquery.foundation.tabs.js"></script>
-	
-	<script src="javascripts/foundation/jquery.foundation.tooltips.js"></script>
-	
-	<script src="javascripts/foundation/jquery.foundation.topbar.js"></script>
-	
-	<script src="javascripts/foundation/jquery.placeholder.js"></script>
-	
-
-  <!-- Application Javascript, safe to override -->
-  <script src="javascripts/foundation/app.js"></script>
+	<!-- Application Javascript, safe to override -->
+	<script src="js/foundation/app.js"></script>
 </body>
 </html>

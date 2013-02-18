@@ -1,8 +1,6 @@
-/* Foundation was made by ZURB, an interaction design and design strategy firm in Campbell, CA */
-/* zurb.com */
+/* PhotoBrawler is made by Christoffer Älvenstrad, Eric Ejneroos and Rasmus Lager */
+/* based on bits and pieces from zrub foundation and twitter bootstrap */
 /* humanstxt.org */
 
 /* SITE */
-  Standards: HTML5, CSS3
-  Components: jQuery, Orbit, Reveal
-  Software: Coda, Textmate, Git
+  Languages: PHP, HTML5, SASS, CSS3, JAVASCRIPT, JQUERY
