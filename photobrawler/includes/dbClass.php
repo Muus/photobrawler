@@ -3,7 +3,7 @@
 class Db{
 var $mysqli;
 public function connector(){
-	$mysqli = new mysqli("localhost", "root", "", "diablofy");
+	$mysqli = new mysqli("localhost", "root", "", "photobrawler");
 	if ($mysqli->connect_errno) {
 		echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 	}
@@ -11,7 +11,7 @@ public function connector(){
 
 
 public function select1(){
-	$mysqli = new mysqli("localhost", "root", "", "diablofy");
+	$mysqli = new mysqli("localhost", "root", "", "photobrawler");
 	if ($mysqli->connect_errno) {
 		echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 	}else{
@@ -49,7 +49,7 @@ public function select1(){
 
 
 	public function insert1(){
-		$mysqli = new mysqli("localhost", "root", "", "diablofy");
+		$mysqli = new mysqli("localhost", "root", "", "photobrawler");
 		if ($mysqli->connect_errno) {
 			echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 		}else{

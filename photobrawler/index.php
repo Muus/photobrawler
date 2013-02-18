@@ -1,5 +1,14 @@
+
 <!DOCTYPE html>
 
+<?php 
+include('includes/dbClass.php');
+
+$db = new Db();
+
+$db->connector();
+
+?>
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
@@ -22,8 +31,11 @@
 
 	<div class="row">
 		<div class="twelve columns">
-			<h2>Welcome to Foundation</h2>
-			<p>This is version 3.2.5.</p>
+			<form method="post">
+				<input placeholder="name">
+				<input placeholder="pass">
+				<input type="submit"></input>
+			</form>
 			<hr />
 		</div>
 	</div>
