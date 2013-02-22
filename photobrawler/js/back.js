@@ -3,7 +3,7 @@ PersonModel = Backbone.Model.extend({
   url: 'inc/api.php',
   defaults: {
   	id:null,
-  	username:null,
+  	email:null,
   	password:null,
   }
    })
@@ -24,7 +24,7 @@ PersonView = Backbone.View.extend({
     		
     			_.each(_this.personCollection.models, function (elem) {
     				
-    	        console.log(elem.get('username'));
+    	        console.log(elem.get('email'));
             
         });
     		

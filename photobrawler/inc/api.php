@@ -31,7 +31,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 function save_user()
 {
   $box_data = json_decode(file_get_contents('php://input'));
-  $x = $box_data->{'username'};
+  $x = $box_data->{'email'};
   $y = $box_data->{'password'};
   
   //$x = $_GET['name'];
@@ -43,7 +43,7 @@ if ($mysqli->connect_errno) {
   }
   // make a call in db.
 
- $stmt = $mysqli->prepare("INSERT INTO accounts (username, password) VALUES (?, ?)");
+ $stmt = $mysqli->prepare("INSERT INTO accounts (email, password) VALUES (?, ?)");
   $stmt->bind_param("ss", $x, $y); 
      
     
@@ -53,7 +53,7 @@ if ($mysqli->connect_errno) {
   
 }
 
-function get_user_by_id($id)
+/*function get_user_by_id($id)
 {
   $user_info = array();
 $mysqli = new mysqli("localhost", "root", "", "photobrawler");
@@ -63,7 +63,7 @@ if ($mysqli->connect_errno) {
   // make a call in db.
 
  $stmt = $mysqli->prepare(
-      "SELECT accounts.id, username FROM accounts");
+      "SELECT accounts.id, email FROM accounts");
      
     $stmt->execute();
     $stmt->bind_result($id, $name);
@@ -72,7 +72,7 @@ if ($mysqli->connect_errno) {
     }
 
   return $user_info;
-}
+}*/
 
 function get_user_list()
 {
@@ -84,16 +84,16 @@ if ($mysqli->connect_errno) {
   // make a call in db.
 
  $stmt = $mysqli->prepare(
-      "SELECT accounts.id, username FROM accounts");
+      "SELECT accounts.id, email FROM accounts");
      
     $stmt->execute();
     $stmt->bind_result($id, $name);
     $result = array();
     while($row1 = $stmt->fetch()) {
-      $arr = "{'id':".$id.", 'username': ".$name."}";
+      $arr = "{'id':".$id.", 'email': ".$name."}";
       //$arr = json_encode($arr, JSON_FORCE_OBJECT);
       $results['id'] = $id;
-      $results['username'] = $name;
+      $results['email'] = $name;
       array_push($result, $results);
           }
  
