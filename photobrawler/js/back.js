@@ -1,14 +1,12 @@
-PersonModel = Backbone.Model.extend({
+PhotoModel = Backbone.Model.extend({
  urlRoot:'inc/api.php',
   url: 'inc/api.php',
   defaults: {
-  	id:null,
-  	email:null,
-  	password:null,
+  	
   }
    })
 
-PersonCollection = Backbone.Collection.extend({ urlRoot:'inc/api.php', model:PersonModel, url: 'inc/api.php', });
+PhotoCollection = Backbone.Collection.extend({ urlRoot:'inc/api.php', model:PhotoModel, url: 'inc/api.php', });
 
 
 PersonView = Backbone.View.extend({
@@ -19,12 +17,12 @@ PersonView = Backbone.View.extend({
     initialize:function () {
         this.template = _.template(this.templateHtml);
         var _this = this;
-    	this.personCollection = new PersonCollection();
-    	this.personCollection.fetch({data:{'limit':0}, success:function () {
+    	this.photoCollection = new PhotoCollection();
+    	this.photoCollection.fetch({data:{'limit':0}, success:function () {
     		
-    			_.each(_this.personCollection.models, function (elem) {
+    			_.each(_this.photoCollection.models, function (elem) {
     				
-    	        console.log(elem.get('email'));
+    	        console.log(elem.get('name'));
             
         });
     		
@@ -36,7 +34,7 @@ PersonView = Backbone.View.extend({
        
         
         console.log('fee');
-        console.log(this.personCollection);
+        console.log(this.photoCollection);
     },
     render:function () {
      

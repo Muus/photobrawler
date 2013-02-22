@@ -87,7 +87,7 @@ if ($mysqli->connect_errno) {
   // make a call in db.
 
  $stmt = $mysqli->prepare(
-      "SELECT id, name, owner_id, link, description, public FROM accounts");
+      "SELECT id, name, owner_id, link, description, public FROM photos");
      
     $stmt->execute();
     $stmt->bind_result($id, $name, $owner_id, $link, $description, $public);
