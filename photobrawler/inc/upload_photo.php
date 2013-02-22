@@ -24,10 +24,10 @@ if (file_exists("photos/" . $_FILES['photo']['name'])) {
 
             /* Musens */
 //$box_data = json_decode(file_get_contents('php://input'));
-  $x = "bildnamn";
+  $x = $new_filename;
   $y = "2";
 
-  $z = "inc/photos/".basename($_FILES['photo']['name']);
+  $z = "inc/photos/".$target_path;
 
   //$x = $_GET['name'];
   //$y = $_GET['pass'];

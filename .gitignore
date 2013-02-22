@@ -10,6 +10,7 @@ coverage
 doc/
 lib/bundler/man
 inc/photos
+inc/photos/*
 pkg
 rdoc
 spec/reports
