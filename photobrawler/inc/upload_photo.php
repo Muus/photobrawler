@@ -12,14 +12,18 @@ $new_filename = str_replace(" ", "_", $new_filename);
 
 echo "new_filename: " . $new_filename . "<br/>";
 
+
 $target_path = "photos/";
 $target_path = $target_path . $new_filename; 
-
+echo "path:".$target_path;
 if (file_exists("photos/" . $_FILES['photo']['name'])) {
     echo 'A file with that name already exists!';
+
 } else {
     if (move_uploaded_file($_FILES['photo']['tmp_name'], $target_path)) {
+      echo "path:".$target_path;
         echo "The file " . basename($_FILES['photo']['name']) . " has been uploaded.";
+
 
 
             /* Musens */
@@ -27,7 +31,7 @@ if (file_exists("photos/" . $_FILES['photo']['name'])) {
   $x = $new_filename;
   $y = "2";
 
-  $z = "inc/photos/".$target_path;
+  $z = "inc/".$target_path;
 
   //$x = $_GET['name'];
   //$y = $_GET['pass'];

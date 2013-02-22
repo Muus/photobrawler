@@ -27,6 +27,7 @@ $db->connector();
 <body>
 
 	<div class="row">
+		<div id="lozz"></div>
 		<div class="twelve columns">
 			<form method="post">
 				<input placeholder="name">
