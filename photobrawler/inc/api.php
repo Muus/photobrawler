@@ -47,8 +47,10 @@ if ($mysqli->connect_errno) {
   $stmt->bind_param("ss", $x, $y); 
      
     
-    //$stmt->bind_result($x, $y);
+    
     $stmt->execute();
+    //$stmt->bind_result($x, $y);
+    print_r($box_data);
 
   
 }
