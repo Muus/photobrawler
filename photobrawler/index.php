@@ -123,7 +123,7 @@ $db->connector();
 	</div>
 
 	<!-- Included JS Files (Uncompressed) -->
-	<script src="js/foundation/jquery.js"></script>
+	<script src="js/libs/jquery-1.7.js"></script>
 	<script src="js/foundation/jquery.cookie.js"></script>
 	<script src="js/foundation/jquery.event.move.js"></script>
 	<script src="js/foundation/jquery.event.swipe.js"></script>
@@ -142,6 +142,9 @@ $db->connector();
 	<script src="js/foundation/jquery.foundation.tooltips.js"></script>
 	<script src="js/foundation/jquery.foundation.topbar.js"></script>
 	<script src="js/foundation/jquery.placeholder.js"></script>
+	<script src="js/libs/underscore.js"></script>
+	<script src="js/libs/backbone.js"></script>
+	<script src="js/back.js"></script>
 	
 	<!-- Application Javascript, safe to override -->
 	<script src="js/foundation/app.js"></script>
