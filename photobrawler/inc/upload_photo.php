@@ -20,7 +20,41 @@ if (file_exists("photos/" . $_FILES['photo']['name'])) {
 } else {
     if (move_uploaded_file($_FILES['photo']['tmp_name'], $target_path)) {
         echo "The file " . basename($_FILES['photo']['name']) . " has been uploaded.";
-    } else {
+
+
+            /* Musens */
+//$box_data = json_decode(file_get_contents('php://input'));
+  $x = "bildnamn";
+  $y = "2";
+
+  $z = "inc/photos/".basename($_FILES['photo']['name']);
+
+  //$x = $_GET['name'];
+  //$y = $_GET['pass'];
+  
+$mysqli = new mysqli("localhost", "root", "", "photobrawler");
+if ($mysqli->connect_errno) {
+    echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+  }
+  // make a call in db.
+
+ $stmt = $mysqli->prepare("INSERT INTO photos (name, owner_id, link) VALUES (?, ?, ?)");
+  $stmt->bind_param("sis", $x, $y, $z); 
+     
+    
+    
+    $stmt->execute();
+
+    //$stmt->bind_result($x, $y);
+    
+
+
+
+
+
+
+            /* END */
+            } else {
         echo "There was an error uploading the file, please try again!<br/>";
         echo "error_code = ";
         if ($_FILES['photo']['error'] == 1) {
