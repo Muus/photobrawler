@@ -33,7 +33,7 @@ function save_photo()
   $box_data = json_decode(file_get_contents('php://input'));
   $x = $box_data->{'email'};
   $y = $box_data->{'password'};
-  
+
   //$x = $_GET['name'];
   //$y = $_GET['pass'];
   

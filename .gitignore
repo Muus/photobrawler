@@ -9,6 +9,7 @@ _yardoc
 coverage
 doc/
 lib/bundler/man
+inc/photos
 pkg
 rdoc
 spec/reports

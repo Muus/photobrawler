@@ -34,8 +34,14 @@ $db->connector();
 				<input type="submit"></input>
 			</form>
 			<hr />
-		</div>
-	</div>
+        </div>
+    </div>
+
+    <form action="inc/upload_photo.php" method="post" enctype="multipart/form-data">
+        Your Photo: <input type="file" name="photo" />
+        <input type="submit" name="submit" value="Submit" />
+    </form>
+
 
 	<div class="row">
 		<div class="eight columns">

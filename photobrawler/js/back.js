@@ -2,7 +2,7 @@ PhotoModel = Backbone.Model.extend({
  urlRoot:'inc/api.php',
   url: 'inc/api.php',
   defaults: {
-  	
+
   }
    })
 
