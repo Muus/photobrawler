@@ -1,0 +1,19 @@
+/* ==========================================================================
+   Lists
+   ========================================================================== */
+   
+	ul,
+	ol {
+		list-style: none;
+		margin: 0 0 1.4em 0;
+		padding: 0;
+		list-style-image: none;
+	}
+
+	nav ul,
+	nav ol {
+		list-style: none;
+		list-style-image: none;
+		margin: 0;
+		padding: 0;
+	}

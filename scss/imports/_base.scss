@@ -1,0 +1,19 @@
+/* ==========================================================================
+   Base
+   ========================================================================== */
+   
+	html {
+		height: 100%;
+		-webkit-text-size-adjust: 100%;
+		-ms-text-size-adjust: 100%;
+	}
+	
+	body {
+		min-height: 100%;
+		margin: 0;
+		line-height: 1.4;
+		-webkit-font-smoothing: antialiased; 
+		font-smoothing: antialiased;
+		@include font-size();
+		@include clearfix();
+	}

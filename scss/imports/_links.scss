@@ -1,0 +1,19 @@
+/* ==========================================================================
+   Links
+   ========================================================================== */
+	
+	a {
+		outline: 0;
+		text-decoration: none;
+		&:visited {
+			@include opacity(.8);
+		}
+		&:focus {
+			outline: thin dotted;
+		}
+		&:active,
+		&:hover {
+			outline: 0;
+			text-decoration: underline;
+		}
+	}

@@ -1,0 +1,125 @@
+/* ==========================================================================
+   Forms
+   ========================================================================== */
+   
+	form {
+		margin: 0;
+	}
+
+	fieldset {
+		border: 0;
+		margin: 0;
+		padding: 0;
+	}
+
+	legend {
+		border: 0;
+		padding: 0;
+		*margin-left: 7px;
+		white-space: normal;
+	}
+
+	label {
+		cursor: pointer;
+	}
+
+	input,
+	button,
+	select,
+	textarea {
+		font-family: inherit;
+		font-size: 100%;
+		margin: 0;
+		vertical-align: baseline;
+		*vertical-align: middle;
+	}
+
+	button,
+	input {
+		line-height: normal;
+	}
+
+	button{
+		cursor: pointer;
+		-webkit-appearance: button;
+		-moz-appearance: button;
+		-ms-appearance: button;
+		-o-appearance: button;
+		appearance: button;
+		*overflow: visible;
+		@include box-sizing();
+		&::-moz-focus-inner {
+			border: 0;
+			padding: 0;
+		}
+	}
+
+	textarea{
+		overflow: auto; 
+		resize: vertical;
+		vertical-align: top;
+	}
+
+	input {
+		&[type="button"], 
+		&[type="reset"], 
+		&[type="submit"] {
+			cursor: pointer;
+			-webkit-appearance: button;
+			-moz-appearance: button;
+			-ms-appearance: button;
+			-o-appearance: button;
+			*overflow: visible;
+		}
+		&[type="checkbox"], 
+		&[type="radio"] {
+			padding: 0;
+			*width: 13px;
+			*height: 13px;
+			@include box-sizing();
+		}
+		&[type="search"] { 
+			-webkit-appearance: textfield;
+			-moz-appearance: textfield;
+			-ms-appearance: textfield;
+			-o-appearance: textfield;
+			@include box-sizing(content-box);
+			&::-webkit-search-decoration,
+			&::-webkit-search-decoration,
+			&::-webkit-search-cancel-button {
+				-webkit-appearance: none;
+			}
+		}
+		&::-moz-focus-inner {
+			border: 0;
+			padding: 0;
+		}
+	}
+
+	input[disabled],
+	select[disabled],
+	textarea[disabled],
+	input[readonly],
+	select[readonly],
+	textarea[readonly] {
+		@include opacity(.5);
+		cursor: default;
+	}
+
+	input:focus:required:invalid,
+	textarea:focus:required:invalid,
+	select:focus:required:invalid {
+		color: #b94a48;
+		border-color: #ee5f5b;
+		&:focus {
+			border-color: darken(#ee5f5b, 10%);
+		}
+	}
+
+	::-webkit-input-placeholder {
+		@include font-size(14); 
+	}
+
+	input:-moz-placeholder {
+		@include font-size(14); 
+	}

@@ -1,0 +1,42 @@
+/* ==========================================================================
+   Media
+   ========================================================================== */
+   
+	img {
+		vertical-align: middle;
+		-ms-interpolation-mode: bicubic;
+	}
+	
+	img,
+	embed,
+	video {
+		max-width: 100%;
+		height: auto !important;
+		border: 0;
+		_width: 100%;
+	}
+	
+	.ie8, ie7 {
+		img {
+			width: auto;
+		}
+	}
+
+	svg:not(:root) { 
+		overflow: hidden; 
+	}
+
+	figure{
+		margin: 0;
+		embed, 
+		img {
+			margin: 0;
+			max-width: 100%;
+			height: auto;
+		}
+	}
+
+	figcaption {
+		display: block;
+		font-weight: normal;
+	}
