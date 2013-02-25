@@ -66,10 +66,11 @@ if ($mysqli->connect_errno) {
     
     
     
-
+    if($stmt->error){
     printf("Error: %s.\n", $stmt->error);
+    }
 
-    //$stmt->bind_result($x, $y);
+    
     
 
   
