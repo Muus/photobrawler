@@ -32,9 +32,9 @@ EstimateItemView = Backbone.View.extend({
     render:function () {
       console.log('itemrendered');
         this.id = this.model.get('name').week;
-        this.link = this.model.get('thumblink');
+        this.thumblink = this.model.get('thumblink');
 
-        this.$el.attr('src', this.link).html(this.template(this.model.toJSON()));
+        this.$el.attr('src', this.thumblink).html(this.template(this.model.toJSON()));
         if(this.model.get('public') === 0){
           $(this.$el).hide();
         }
@@ -48,11 +48,13 @@ EstimateItemView = Backbone.View.extend({
       
       modelId = this.model.get('id');
       link = this.model.get('link');
+      thumblink = this.model.get('thumblink');
       var el = this.$el;
     
       this.model.destroy({headers:{
         'id' : modelId,
         'link' : link,
+        'thumblink' : thumblink,
     },
           success: function(removed_person, data) {
              $(el).hide();

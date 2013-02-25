@@ -17,7 +17,13 @@ function do_photo_stuff(){
         $modelDeleteID = $value;
       }else if($header === 'link'){
         $photo_link = '../'.$value;
+
+      }else if($header === 'thumblink'){
+        $thumb_link = '../'.$value;
+
       }
+
+
     }//End of if server delete
 }else{//means it wasnt delete, probably POST OR PUT
   //Decode json and set variables
@@ -26,6 +32,7 @@ function do_photo_stuff(){
   $a = $box_data->{'name'};
   $b = $box_data->{'owner_id'};
   $c = $box_data->{'link'};
+  $x = $box_data->{'thumblink'};
   $d = $box_data->{'description'};
   $e = $box_data->{'public'};
 }
@@ -38,15 +45,15 @@ if ($mysqli->connect_errno) {
 //Switch for post or put or smthn else
   switch ($_SERVER['REQUEST_METHOD']){
     case "POST":
-        $stmt = $mysqli->prepare("INSERT INTO photos (id, name, owner_id, link, description, public) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("isissi", $jsonid, $a, $b, $c, $d, $e); 
+        $stmt = $mysqli->prepare("INSERT INTO photos (id, name, owner_id, link, description, public) VALUES (?, ?, ?, ?,, ? ?, ?)");
+        $stmt->bind_param("isissi", $jsonid, $a, $b, $c, $x, $d, $e); 
         $stmt->execute();
         //Have to return the print
         print_r($box_data);
         break;
     case "PUT":
-        $stmt = $mysqli->prepare("UPDATE photos SET name=?, owner_id=?, link=?, description=?, public=? WHERE id=?");
-        $stmt->bind_param("sissii", $a, $b, $c, $d, $e, $jsonid); 
+        $stmt = $mysqli->prepare("UPDATE photos SET name=?, owner_id=?, link=?, thumblink=?,description=?, public=? WHERE id=?");
+        $stmt->bind_param("sisssii", $a, $b, $c, $x, $d, $e, $jsonid); 
         $stmt->execute();
         //Have to return the print
         print_r($box_data);
@@ -57,6 +64,7 @@ if ($mysqli->connect_errno) {
         $stmt->execute();
         //Delete the file from directory
         unlink($photo_link);
+        unlink($thumb_link);
         break;
 }
     //Id something went wrong
@@ -75,10 +83,10 @@ if ($mysqli->connect_errno) {
   
 
  $stmt = $mysqli->prepare(
-      "SELECT id, name, owner_id, link, description, public FROM photos");
+      "SELECT id, name, owner_id, link, thumblink, description, public FROM photos");
      
     $stmt->execute();
-    $stmt->bind_result($id, $name, $owner_id, $link, $description, $public);
+    $stmt->bind_result($id, $name, $owner_id, $link, $thumblink, $description, $public);
     $result = array();
     while($row1 = $stmt->fetch()) {
       $arr = "{'id':".$id.", 'email': ".$name."}";
@@ -86,6 +94,7 @@ if ($mysqli->connect_errno) {
       $results['name'] = $name;
       $results['owner_id'] = $owner_id;
       $results['link'] = $link;
+      $results['thumblink'] = $thumblink;
       $results['description'] = $description;
       $results['public'] = $public;
       array_push($result, $results);
