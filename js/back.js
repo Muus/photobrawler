@@ -45,7 +45,7 @@ EstimateItemView = Backbone.View.extend({
      
     },
     onDestroy:function () {
-      alert('tap');
+      
       modelId = this.model.get('id');
       var el = this.$el;
     
