@@ -15,7 +15,7 @@ EstimateItemView = Backbone.View.extend({
     templateHtml:"",
     events:{
 
-        "focus":"onFocus",
+        "click":"onClick",
 
 
     },
@@ -32,10 +32,20 @@ EstimateItemView = Backbone.View.extend({
         this.link = this.model.get('link');
 
         this.$el.attr('src', this.link).html(this.template(this.model.toJSON()));
+        if(this.model.get('public') === 0){
+          $(this.$el).hide();
+        }
 
 
     },
-    onFocus:function () {
+    onClick:function () {
+      console.log(this.model);
+      //this.model.set('public', 0);
+      
+      //this.model.save();
+      //this.render();
+      
+
 
 
         

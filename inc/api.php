@@ -23,16 +23,20 @@ $mysqli = new mysqli("localhost", "root", "", "diablofy");
     }
 
 }*/
-if($_SERVER['REQUEST_METHOD'] == "POST"){
-  save_user();
+if($_SERVER['REQUEST_METHOD'] == "POST" || $_SERVER['REQUEST_METHOD'] ==  "PUT"){
+  save_photo();
 }else{
   get_user_list();
 }  
 function save_photo()
 {
   $box_data = json_decode(file_get_contents('php://input'));
-  $x = $box_data->{'email'};
-  $y = $box_data->{'password'};
+  $jsonid = $box_data->{'id'};
+  $a = $box_data->{'name'};
+  $b = $box_data->{'owner_id'};
+  $c = $box_data->{'link'};
+  $d = $box_data->{'description'};
+  $e = $box_data->{'public'};
 
   //$x = $_GET['name'];
   //$y = $_GET['pass'];
@@ -43,12 +47,29 @@ if ($mysqli->connect_errno) {
   }
   // make a call in db.
 
- $stmt = $mysqli->prepare("INSERT INTO photos (name, owner_id, link, description, public) VALUES (?, ?, ?, ?, ?)");
-  $stmt->bind_param("ss", $x, $y); 
+//Switch for post or put or smthn else
+
+  switch ($_SERVER['REQUEST_METHOD']) {
+    case "POST":
+        $stmt = $mysqli->prepare("INSERT INTO photos (id, name, owner_id, link, description, public) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("isissi", $jsonid, $a, $b, $c, $d, $e); 
+        break;
+    case "PUT":
+        $stmt = $mysqli->prepare("UPDATE photos SET name=?, owner_id=?, link=?, description=?, public=? WHERE id=?");
+        $stmt->bind_param("sissii", $a, $b, $c, $d, $e, $jsonid); 
+        break;
+    case 2:
+        echo "i equals 2";
+        break;
+}
+ 
+ 
      
     
     
     $stmt->execute();
+
+    printf("Error: %s.\n", $stmt->error);
 
     //$stmt->bind_result($x, $y);
     print_r($box_data);
