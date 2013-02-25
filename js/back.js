@@ -13,7 +13,7 @@ PhotoCollection = Backbone.Collection.extend({ urlRoot:'inc/api.php', model:Phot
 
 EstimateItemView = Backbone.View.extend({
     tagName:"img",
-    className:'temp-photo',
+    className:'',
     templateHtml:"",
     events:{
 
@@ -32,7 +32,7 @@ EstimateItemView = Backbone.View.extend({
     render:function () {
       console.log('itemrendered');
         this.id = this.model.get('name').week;
-        this.link = this.model.get('link');
+        this.link = this.model.get('thumblink');
 
         this.$el.attr('src', this.link).html(this.template(this.model.toJSON()));
         if(this.model.get('public') === 0){

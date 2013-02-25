@@ -6032,11 +6032,6 @@ table.hide-for-medium {
   }
 }
 
-.temp-photo {
-    height: 100px;
-    width: 100px;
-}
-
 div.mobile-camera > input[type='file'] {
     opacity:0;
 }
