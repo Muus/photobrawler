@@ -1,10 +1,12 @@
+
+
 PhotoModel = Backbone.Model.extend({
  urlRoot:'inc/api.php',
   url: 'inc/api.php',
   defaults: {
 
   }
-   })
+   });
 
 PhotoCollection = Backbone.Collection.extend({ urlRoot:'inc/api.php', model:PhotoModel, url: 'inc/api.php', });
 
@@ -15,7 +17,8 @@ EstimateItemView = Backbone.View.extend({
     templateHtml:"",
     events:{
 
-        "click":"onClick",
+        "click":"onDestroy",
+       
 
 
     },
@@ -42,6 +45,7 @@ EstimateItemView = Backbone.View.extend({
      
     },
     onDestroy:function () {
+      alert('tap');
       modelId = this.model.get('id');
       var el = this.$el;
     
@@ -62,6 +66,7 @@ EstimateItemView = Backbone.View.extend({
       });
       
     },onChangePublic:function () {
+      alert('swipe');
       modelId = this.model.get('id');
       var el = this.$el;
       this.model.set('public', 0);

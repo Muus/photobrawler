@@ -156,6 +156,8 @@ $db->connector();
 	<script src="js/foundation/jquery.foundation.tooltips.js"></script>
 	<script src="js/foundation/jquery.foundation.topbar.js"></script>
 	<script src="js/foundation/jquery.placeholder.js"></script>
+	<script src="js/jqtouch.js"></script>
+	<script src="js/jqtouch-jquery.js"></script>
 	<script src="js/libs/underscore.js"></script>
 	<script src="js/libs/backbone.js"></script>
 	<script src="js/back.js"></script>
