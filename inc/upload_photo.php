@@ -41,9 +41,9 @@ if ($mysqli->connect_errno) {
     echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
   }
   // make a call in db.
-
- $stmt = $mysqli->prepare("INSERT INTO photos (name, owner_id, link) VALUES (?, ?, ?)");
-  $stmt->bind_param("sis", $x, $y, $z); 
+$be_public = 1;
+ $stmt = $mysqli->prepare("INSERT INTO photos (name, owner_id, link, public) VALUES (?, ?, ?, ?)");
+  $stmt->bind_param("sisi", $x, $y, $z, $be_public); 
      
     
     

@@ -75,8 +75,10 @@ PersonView = Backbone.View.extend({
          _.each(_this.photoCollection.models, function (elem) {
             
               console.log(elem.get('name'));
+              if(elem.get('public') === 1){
               var view = new EstimateItemView({model:elem});
             jQuery("#lozz").append(view.$el);
+          }
         });
           
         
