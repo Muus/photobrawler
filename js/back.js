@@ -39,7 +39,23 @@ EstimateItemView = Backbone.View.extend({
 
     },
     onClick:function () {
-      console.log(this.model);
+      
+      modelId = this.model.get('id');
+      
+    
+      this.model.destroy({headers:{
+        'id' : modelId,
+    },
+          success: function(removed_person, data) {
+             
+              console.log('jj');
+          },
+          error: function(aborted_person, response) {
+            console.log(aborted_person);
+            console.log(response);
+              // Error handling as needed.
+          }
+      });
       //this.model.set('public', 0);
       
       //this.model.save();
