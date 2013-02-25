@@ -47,10 +47,12 @@ EstimateItemView = Backbone.View.extend({
     onDestroy:function () {
       
       modelId = this.model.get('id');
+      link = this.model.get('link');
       var el = this.$el;
     
       this.model.destroy({headers:{
         'id' : modelId,
+        'link' : link,
     },
           success: function(removed_person, data) {
              $(el).hide();
