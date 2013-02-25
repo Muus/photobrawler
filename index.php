@@ -38,19 +38,41 @@ $db->connector();
         </div>
     </div>
 
-    <form action="inc/upload_photo.php" method="post" enctype="multipart/form-data">
-        Choose photo: <input type="file" name="photo" />
-        <input type="submit" name="submit" value="Submit" />
-    </form>
+    <div class="row">
+        <div class="column">
+            <h3>Gallery</h3>
 
-    <form id="mobile-form" action="inc/upload_photo.php" method="post" enctype="multipart/form-data">
-        <p id="mobile-camera" class="large secondary button">Take photo</p>
-        <div class="mobile-camera">
-            <input type="file" name="photo" accept="image/*" capture="camera" />
+            <div class="row">
+                <div class="column">
+                    <form id="mobile-gallery-form" action="inc/upload_photo.php" method="post" enctype="multipart/form-data">
+                        <p id="mobile-gallery" class="large button">Upload photo</p>
+                        <div class="mobile-gallery">
+                            <input type="file" name="photo" accept="image/*" capture="gallery" />
+                        </div>  
+                    </form>
+                </div>
+            </div>
         </div>
-    </form>
+    </div>
+  
+    <div class="row">
+        <div class="column">
+            <h3>Camera</h3>
 
-	<div class="row">
+            <div class="row">
+                <div class="column">
+                    <form id="mobile-camera-form" action="inc/upload_photo.php" method="post" enctype="multipart/form-data">
+                        <p id="mobile-camera" class="large button">Capture photo</p>
+                        <div class="mobile-camera">
+                            <input type="file" name="photo" accept="image/*" capture="camera" />
+                        </div>  
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
 		<div class="eight columns">
 			<h3>The Grid</h3>
 

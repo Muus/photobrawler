@@ -6040,3 +6040,7 @@ table.hide-for-medium {
 div.mobile-camera > input[type='file'] {
     opacity:0;
 }
+
+div.mobile-gallery > input[type='file'] {
+    opacity:0;
+}
