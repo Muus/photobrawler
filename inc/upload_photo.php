@@ -1,63 +1,43 @@
 <?php
 
-echo "name: " . $_FILES["photo"]["name"] . "<br/>";
-echo "tmp_name: " . $_FILES["photo"]["tmp_name"] . "<br/>";
-echo "type: " . $_FILES["photo"]["type"] . "<br/>";
-echo "size: " . $_FILES["photo"]["size"] . "<br/>";
+// echo "name: " . $_FILES["photo"]["name"] . "<br/>";
+// echo "tmp_name: " . $_FILES["photo"]["tmp_name"] . "<br/>";
+// echo "type: " . $_FILES["photo"]["type"] . "<br/>";
+// echo "size: " . $_FILES["photo"]["size"] . "<br/>";
 
-echo "basename: " . basename($_FILES['photo']['name']) . "<br/>";
+// echo "basename: " . basename($_FILES['photo']['name']) . "<br/>";
 
 $new_filename = strtolower(basename($_FILES['photo']['name']));
 $new_filename = str_replace(" ", "_", $new_filename);
 
-echo "new_filename: " . $new_filename . "<br/>";
-
+// echo "new_filename: " . $new_filename . "<br/>";
 
 $target_path = "photos/";
 $target_path = $target_path . $new_filename; 
 if (file_exists("photos/" . $_FILES['photo']['name'])) {
     echo 'A file with that name already exists!';
-
 } else {
     if (move_uploaded_file($_FILES['photo']['tmp_name'], $target_path)) {
         echo "path: " . $target_path . "<br/>";
         echo "The file " . basename($_FILES['photo']['name']) . " has been uploaded.";
+        $x = $new_filename;
+        $y = "2";
+        $z = "inc/".$target_path;
+        // $x = $_GET['name'];
+        // $y = $_GET['pass'];
+        $mysqli = new mysqli("localhost", "root", "", "photobrawler");
+        if ($mysqli->connect_errno) {
+            echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+        }
+        // make a call in db.
+        $be_public = 1;
+        $stmt = $mysqli->prepare("INSERT INTO photos (name, owner_id, link, public) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("sisi", $x, $y, $z, $be_public); 
+        $stmt->execute();
 
-
-
-            /* Musens */
-//$box_data = json_decode(file_get_contents('php://input'));
-  $x = $new_filename;
-  $y = "2";
-
-  $z = "inc/".$target_path;
-
-  //$x = $_GET['name'];
-  //$y = $_GET['pass'];
-  
-$mysqli = new mysqli("localhost", "root", "", "photobrawler");
-if ($mysqli->connect_errno) {
-    echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-  }
-  // make a call in db.
-$be_public = 1;
- $stmt = $mysqli->prepare("INSERT INTO photos (name, owner_id, link, public) VALUES (?, ?, ?, ?)");
-  $stmt->bind_param("sisi", $x, $y, $z, $be_public); 
-     
+        // $stmt->bind_result($x, $y);
     
-    
-    $stmt->execute();
-
-    //$stmt->bind_result($x, $y);
-    
-
-
-
-
-
-
-            /* END */
-            } else {
+    } else {
         echo "There was an error uploading the file, please try again!<br/>";
         echo "error_code = ";
         if ($_FILES['photo']['error'] == 1) {
@@ -78,4 +58,7 @@ $be_public = 1;
             echo 'Value: 8; A PHP extension stopped the file upload. PHP does not provide a way to ascertain which extension caused the file upload to stop; examining the list of loaded extensions with phpinfo() may help. Introduced in PHP 5.2.0.';
         }    
     }
+    $mysqli->close();
 }
+
+header('Location: /photobrawler/');
