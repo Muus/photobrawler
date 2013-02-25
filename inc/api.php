@@ -17,6 +17,8 @@ function do_photo_stuff()
       
       if ($header === 'id'){
         $modelDeleteID = $value;
+      }else if($header === 'link'){
+        $photo_link = '../'.$value;
       }
   }
 
@@ -58,6 +60,8 @@ if ($mysqli->connect_errno) {
         $stmt = $mysqli->prepare("DELETE FROM photos WHERE id=?");
         $stmt->bind_param("i", $modelDeleteID); 
         $stmt->execute();
+
+        unlink($photo_link);
         break;
 }
  
