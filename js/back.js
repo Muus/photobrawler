@@ -11,7 +11,7 @@ PhotoCollection = Backbone.Collection.extend({ urlRoot:'inc/api.php', model:Phot
 
 EstimateItemView = Backbone.View.extend({
     tagName:"img",
-    className:'',
+    className:'temp-photo',
     templateHtml:"",
     events:{
 

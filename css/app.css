@@ -6031,3 +6031,8 @@ table.hide-for-medium {
     margin: 0;
   }
 }
+
+.temp-photo {
+    height: 100px;
+    width: 100px;
+}
