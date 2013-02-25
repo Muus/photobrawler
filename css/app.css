@@ -6036,3 +6036,7 @@ table.hide-for-medium {
     height: 100px;
     width: 100px;
 }
+
+div.mobile-camera > input[type='file'] {
+    opacity:0;
+}

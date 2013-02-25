@@ -39,16 +39,15 @@ $db->connector();
     </div>
 
     <form action="inc/upload_photo.php" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="check" value="0" />
         Choose photo: <input type="file" name="photo" />
         <input type="submit" name="submit" value="Submit" />
     </form>
 
-
-    <form action="inc/upload_photo.php" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="check" value="1" />
-        Take photo:  <input type="file" name="photo" accept="image/*" capture="camera" />
-        <input type="submit" name="submit" value="Submit" />
+    <form id="mobile-form" action="inc/upload_photo.php" method="post" enctype="multipart/form-data">
+        <p id="mobile-camera" class="large secondary button">Take photo</p>
+        <div class="mobile-camera">
+            <input type="file" name="photo" accept="image/*" capture="camera" />
+        </div>
     </form>
 
 	<div class="row">
@@ -158,7 +157,8 @@ $db->connector();
 	<script src="js/foundation/jquery.placeholder.js"></script>
 	<script src="js/libs/underscore.js"></script>
 	<script src="js/libs/backbone.js"></script>
-	<script src="js/back.js"></script>
+    <script src="js/back.js"></script>
+    <script src="js/buttons.js"></script>
 	
 	<!-- Application Javascript, safe to override -->
 	<script src="js/foundation/app.js"></script>
