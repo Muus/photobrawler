@@ -1,26 +1,62 @@
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+*.pyc
+
+# Packages #
+############
+# It's better to unpack these files and commit the raw source
+# git has its own build in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs #
+########
+*.log
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+*.DS_Store
+._*
+
+# Etc #
+#######
 *.gem
+*.orig
 *.rbc
+*.swp
+_yardoc
 .bundle
 .config
+.sass-cache/*
 .yardoc
-Gemfile.lock
-InstalledFiles
-_yardoc
 coverage
 doc/
-lib/bundler/man
-inc/photos
+Gemfile.lock
+InstalledFiles
 inc/photos/*
+inc/thumbnails/*
+lib/bundler/man
+marketing/.sass-cache/*
 pkg
 rdoc
 spec/reports
 test/tmp
 test/version_tmp
 tmp
-*.DS_Store
-marketing/.sass-cache/*
-.sass-cache/*
 test/.sass-cache/*
 test/stylesheets/*
-*.orig
-*.swp
+
