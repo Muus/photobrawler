@@ -107,6 +107,41 @@ PersonView = Backbone.View.extend({
       var _this = this;
       this.photoCollection = new PhotoCollection();
       this.photoCollection.fetch({data:{'limit':0}, success:function () {
+         
+      var standardLength = _this.photoCollection.models.length;
+      var newLength;
+      function rerun(){
+
+        setTimeout(function(){
+         
+
+          _this.photoCollection.fetch({data:{'limit':0}, success:function () {
+
+            newLength = _this.photoCollection.models.length;
+            if(newLength > standardLength){
+              standardLength = newLength;
+
+               console.log('tja');
+//var last_model = this.collection.at(this.collection.length - 1);
+               newMod = _this.photoCollection.last();
+               console.log(newMod);
+               if(newMod.get('public') === 1){
+                var view = new EstimateItemView({model:newMod});
+              jQuery("#lozz").append(view.$el);
+          }
+            }
+
+
+
+          }
+
+        });
+
+          rerun();
+        },1000);
+      }
+      rerun();
+      console.log(standardLength);
          _.each(_this.photoCollection.models, function (elem) {
             
               console.log(elem.get('name'));
