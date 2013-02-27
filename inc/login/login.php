@@ -12,25 +12,27 @@ function cleaner ($s) {
 	return $s;
 }
 
-$mysqli = new mysqli('localhost', 'root', '', 'diablofy');
+$mysqli = new mysqli('localhost', 'root', '', 'photobrawler');
 if ($mysqli->connect_errno) {
 	echo 'Failed to connect to MySQL: (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error;
 } else {
-	$username = cleaner($_POST['username']);
+	
+	$email = cleaner($_POST['email']);
 	$password = cleaner($_POST['password']);
+
 	$stmt = $mysqli->prepare('
-		SELECT username, password, id FROM users
-		WHERE username = ? AND password = ?
+		SELECT email, password, id FROM accounts
+		WHERE email = ? AND password = ?
 	');
 	
-	$stmt->bind_param('ss', $username, $password);
-	echo 'username: ' . $username . '<br/>';
-	echo 'password: ' . $password . '<br/>';
+	$stmt->bind_param('ss', $email, $password);
+	echo 'email: ' . $email . '<br/>';
+	//echo 'password: ' . $password . '<br/>';
 	if ($stmt->execute()) {
 		$stmt->bind_result($col1, $col2, $col3);
 		if ($stmt->fetch() == 1) {
 			session_start();
-			$_SESSION['username'] = $username;
+			$_SESSION['email'] = $email;
 			$_SESSION['userid'] = $col3;
 			header('Location: ../../index.php?loggedin=true');
 			exit;

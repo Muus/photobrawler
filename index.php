@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 
 <?php 
+session_start();
+if (isset($_SESSION['email'])) {
+	echo 'user is kinda logged in';
+}
 include('inc/dbClass.php');
 
 $db = new Db();
