@@ -79,6 +79,7 @@ $db->connector();
                         <p id="mobile-camera" class="large button">Capture photo</p>
                         <div class="mobile-camera">
                             <input type="file" name="photo" accept="image/*" capture="camera" />
+                            <input type="text" id="photo-name" name="photo-name" />
                         </div>  
                     </form>
                 </div>

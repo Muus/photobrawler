@@ -2,6 +2,7 @@
 
 include('SimpleImage.php');
 
+$database_name = $_POST['photo-name'];
 $new_filename = strtolower(basename($_FILES['photo']['name']));
 $new_filename = str_replace(" ", "_", $new_filename);
 
@@ -33,7 +34,7 @@ if (file_exists("photos/" . $_FILES['photo']['name'])) {
         // make a call in db.
         $be_public = 1;
         $stmt = $mysqli->prepare("INSERT INTO photos (name, owner_id, link, thumblink, public) VALUES (?, ?, ?, ?, ?)");
-        $stmt->bind_param("sissi", $x, $y, $z, $thumblink, $be_public); 
+        $stmt->bind_param("sissi", $database_name, $y, $z, $thumblink, $be_public); 
         $stmt->execute();
 
         // $stmt->bind_result($x, $y);
