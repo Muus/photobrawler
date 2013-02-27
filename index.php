@@ -94,7 +94,8 @@ $db->connector();
     
     <div class="row">
 		<div class="eight columns">
-			<h3>The Grid</h3>
+			
+			
 
 			<!-- Grid Example -->
 			<div class="row">
@@ -133,7 +134,7 @@ $db->connector();
 					</div>
 				</div>
 			</div>
-
+<div id="lozzAcc"></div>
 			<h3>Tabs</h3>
 			<dl class="tabs">
 				<dd class="active"><a href="#simple1">Simple Tab 1</a></dd>
