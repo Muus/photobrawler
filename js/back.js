@@ -1,41 +1,40 @@
 
 
 PhotoModel = Backbone.Model.extend({
- urlRoot:'inc/api.php',
+  urlRoot:'inc/api.php',
   url: 'inc/api.php',
-  defaults: {
+  defaults: {},
+});
 
-  }
-   });
-
-PhotoCollection = Backbone.Collection.extend({ urlRoot:'inc/api.php', model:PhotoModel, url: 'inc/api.php', });
+PhotoCollection = Backbone.Collection.extend({ 
+  urlRoot:'inc/api.php',
+  model:PhotoModel,
+  url: 'inc/api.php',
+});
 
 
 EstimateItemView = Backbone.View.extend({
-    tagName:"img",
-    className:'',
-    templateHtml:"",
-    events:{
-
+  tagName:"img",
+  className:'',
+  templateHtml:"",
+  events:{
         "click":"onDestroy",
-       
-
-
-    },
+  },
 
     initialize:function () {
-
-
         this.template = _.template(this.templateHtml);
         this.render();
     },
     render:function () {
-      console.log('itemrendered');
-        this.id = this.model.get('name').week;
         this.thumblink = this.model.get('thumblink');
+        this.link = this.model.get('link');
+        if(this.model.get('public') === 1){
+          this.$el.attr('src', this.thumblink).attr('true_link', this.link).html(this.template(this.model.toJSON()));
+        }else{
+          this.$el.attr('src', this.thumblink).attr('true_link', this.link).attr('class', 'notPublic').html(this.template(this.model.toJSON()));
+        }
+        if(this.model.get('public') === 0 && !logged_in_user){
 
-        this.$el.attr('src', this.thumblink).html(this.template(this.model.toJSON()));
-        if(this.model.get('public') === 0){
           $(this.$el).hide();
         }
 
@@ -50,7 +49,7 @@ EstimateItemView = Backbone.View.extend({
       link = this.model.get('link');
       thumblink = this.model.get('thumblink');
       var el = this.$el;
-    
+    //Need these headers to complete the desired delete
       this.model.destroy({headers:{
         'id' : modelId,
         'link' : link,
@@ -86,7 +85,7 @@ EstimateItemView = Backbone.View.extend({
 
 
 
-PersonView = Backbone.View.extend({
+GalleryView = Backbone.View.extend({
     tagName:'div',
     className:'',
     templateHtml:"<div></div>",
@@ -122,12 +121,15 @@ PersonView = Backbone.View.extend({
               standardLength = newLength;
 
                console.log('tja');
-//var last_model = this.collection.at(this.collection.length - 1);
                newMod = _this.photoCollection.last();
                console.log(newMod);
                if(newMod.get('public') === 1){
                 var view = new EstimateItemView({model:newMod});
               jQuery("#lozz").append(view.$el);
+          }else{
+            var view = new EstimateItemView({model:newMod});
+              jQuery("#lozz").append(view.$el);
+
           }
             }
 
@@ -148,6 +150,10 @@ PersonView = Backbone.View.extend({
               if(elem.get('public') === 1){
               var view = new EstimateItemView({model:elem});
             jQuery("#lozz").append(view.$el);
+          }else{
+            var view = new EstimateItemView({model:elem});
+              jQuery("#lozz").append(view.$el);
+
           }
         });
           
@@ -168,7 +174,7 @@ PersonView = Backbone.View.extend({
    
     });
 
-var lol = new PersonView({ el: $("#lozz") });
+var lol = new GalleryView({ el: $("#lozz") });
 
                     //Lets do both checks inside the success for projects, because this seems to take much more time.
  

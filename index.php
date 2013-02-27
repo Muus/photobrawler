@@ -3,7 +3,23 @@
 <?php 
 session_start();
 if (isset($_SESSION['email'])) {
+	echo '
+<script>
+	var logged_in_user = '.$_SESSION["userid"].';
+</script>
+	';
+
+
 	echo 'user is kinda logged in';
+
+}else{
+
+	echo '
+<script>
+	var logged_in_user = false;
+</script>
+	';
+
 }
 include('inc/dbClass.php');
 
