@@ -7,6 +7,7 @@ if (isset($_SESSION['email'])) {
 <script>
 	var logged_in_user = '.$_SESSION["userid"].';
 </script>
+    <a href="logout/"><button>LOGOUT</button></a>
 	';
 
 
@@ -14,9 +15,10 @@ if (isset($_SESSION['email'])) {
 
 }else{
 
-	echo '
+    echo '
+    <a href="login/"><button>LOGIN</button></a>
 <script>
-	var logged_in_user = false;
+    var logged_in_user = false;
 </script>
 	';
 
@@ -48,14 +50,6 @@ $db->connector();
 
 	<div class="row">
 		<div id="lozz"></div>
-		<div class="twelve columns">
-			<form method="post">
-				<input placeholder="name">
-				<input placeholder="pass">
-				<input type="submit"></input>
-			</form>
-			<hr />
-        </div>
     </div>
 
     <div class="row">
