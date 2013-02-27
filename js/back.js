@@ -214,14 +214,9 @@ SingleAccountsView = Backbone.View.extend({
         this.render();
     },
     render:function () {
-        //this.thumblink = this.model.get('thumblink');
-        //this.link = this.model.get('link');
-        
+           
           this.$el.html(this.template(this.model.toJSON()));
         
-        
-
-
     },
     onBlur:function () {
       console.log('blurred');
@@ -235,8 +230,6 @@ SingleAccountsView = Backbone.View.extend({
       this.model.set('state', $('[name=state]').val() );
       this.model.set('country', $('[name=country]').val() );
       this.model.set('info', $('[name=info]').val() );
-      
-      
       this.model.save();
      
     },
@@ -244,8 +237,7 @@ SingleAccountsView = Backbone.View.extend({
 
       console.log('focused');
       disName = $(this).text();
-      console.log(disName);
-      
+          
       
     },onChangePublic:function () {
       alert('swipe');
@@ -271,13 +263,7 @@ AccountsView = Backbone.View.extend({
 
     initialize:function () {
         this.template = _.template(this.templateHtml);
-        
-        
         this.render();
-       
-        
-        console.log('fee');
-        console.log(this.accountsCollection);
     },
     
     render:function () {
@@ -288,41 +274,8 @@ AccountsView = Backbone.View.extend({
          
       var standardLength = _this.accountsCollection.models.length;
       var newLength;
-      /*function rerun(){
-
-        setTimeout(function(){
-         
-
-          _this.photoCollection.fetch({data:{'limit':0}, success:function () {
-
-            newLength = _this.photoCollection.models.length;
-            if(newLength > standardLength){
-              standardLength = newLength;
-
-               console.log('tja');
-               newMod = _this.photoCollection.last();
-               console.log(newMod);
-               if(newMod.get('public') === 1){
-                var view = new PhotoView({model:newMod});
-              jQuery("#lozz").append(view.$el);
-          }else{
-            var view = new PhotoView({model:newMod});
-              jQuery("#lozz").append(view.$el);
-
-          }
-            }
-
-
-
-          }
-
-        });
-
-          rerun();
-        },1000);
-      }
-      rerun();*/
-      console.log(standardLength);
+      
+     
          _.each(_this.accountsCollection.models, function (elem) {
             
               console.log(elem.get('email'));
