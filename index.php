@@ -75,6 +75,11 @@ $db->connector();
 	<div class="container">
 		<div class="topBanner">
 			PhotoBrawler
+		<?php if(isset($_SESSION['email'])){
+			echo 'Logged in';
+		}
+			?>
+
 	    </div>
 	    
 	    <div id="lozz" class="photoGrid">
