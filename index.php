@@ -72,16 +72,30 @@ $db->connector();
 </head>
 <body>
 
-	<div class="topBanner">
-		<div id="lozz"></div>
-    </div>
+	<div class="container">
+		<div class="topBanner">
+			PhotoBrawler
+	    </div>
+	    
+	    <div class="photoGrid">
+		    <img src="inc/photos/glasses.jpg">
+		    <img src="inc/photos/glasses.jpg">
+		    <img src="inc/photos/glasses.jpg">
+		    <img src="inc/photos/glasses.jpg">
+		    <img src="inc/photos/glasses.jpg">
+		    <img src="inc/photos/glasses.jpg">
+		    <img src="inc/photos/glasses.jpg">
+		    <img src="inc/photos/glasses.jpg">
+		    <img src="inc/photos/glasses.jpg">
+		    <img src="inc/photos/glasses.jpg">
+		    <img src="inc/photos/glasses.jpg">
+		    <img src="inc/photos/glasses.jpg">
+		    <img src="inc/photos/glasses.jpg">
+		    <img src="inc/photos/glasses.jpg">
+	    </div>
 
 
-
-
-
-
-
+	</div>
 	<!-- Included JS Files (Uncompressed) -->
 	<script src="js/libs/jquery-1.7.js"></script>
 	<script src="js/jqtouch.js"></script>
