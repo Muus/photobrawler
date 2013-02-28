@@ -62,7 +62,7 @@ PhotoView = Backbone.View.extend({
             });
         }
     },
-     
+    
     onDestroy:function () {
         modelId = this.model.get('id');
         link = this.model.get('link');
@@ -179,7 +179,7 @@ SingleAccountsView = Backbone.View.extend({
     },
 
     render:function () {
-        //this.thumblink = this.model.get('thumblink');
+    	//this.thumblink = this.model.get('thumblink');
         //this.link = this.model.get('link');
         this.$el.html(this.template(this.model.toJSON()));
     },
@@ -196,7 +196,7 @@ SingleAccountsView = Backbone.View.extend({
         this.model.set('state', $('[name=state]').val() );
         this.model.set('country', $('[name=country]').val() );
         this.model.set('info', $('[name=info]').val() );
-        this.model.save();   
+        this.model.save();
     },
 
     onFocus:function () {
@@ -222,7 +222,8 @@ AccountsView = Backbone.View.extend({
     templateHtml:"<div></div>",
 
     initialize:function () {
-        this.template = _.template(this.templateHtml);        
+
+        this.template = _.template(this.templateHtml);
         this.render();
         console.log('fee');
         console.log(this.accountsCollection);
@@ -232,7 +233,7 @@ AccountsView = Backbone.View.extend({
         this.$el.html(this.template());
         var _this = this;
         this.accountsCollection = new AccountsCollection();
-        this.accountsCollection.fetch({data:{'limit':0}, success:function () { 
+        this.accountsCollection.fetch({data:{'limit':0}, success:function () {
             var standardLength = _this.accountsCollection.models.length;
             var newLength;
             /*
@@ -265,6 +266,7 @@ AccountsView = Backbone.View.extend({
                 //Change later to other div
                 jQuery("#lozz").append(view.$el);
             });
+
         }});
         console.log('render');
     },
@@ -273,4 +275,4 @@ AccountsView = Backbone.View.extend({
 var lol = new GalleryView({ el: $("#lozz") });
 var lol = new AccountsView({ el: $("#lozzAcc") });
 
-//Lets do both checks inside the success for projects, because this seems to take much more time. 
+//Lets do both checks inside the success for projects, because this seems to take much more time.
