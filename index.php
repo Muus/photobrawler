@@ -52,7 +52,7 @@ $db->connector();
 	<script>
 		eCSSential({
 			"all": "css/all.css",
-			"(min-width: 480px)": "css/480px.css",
+			"(min-width: 200px)": "css/480px.css",
 			"(min-width: 600px)": "css/600px.css",
 			"(min-width: 768px)": "css/768px.css",
 			"(min-width: 992px)": "css/992px.css"
@@ -77,24 +77,18 @@ $db->connector();
 			PhotoBrawler
 	    </div>
 	    
-	    <div class="photoGrid">
-		    <img src="inc/photos/glasses.jpg">
-		    <img src="inc/photos/glasses.jpg">
-		    <img src="inc/photos/glasses.jpg">
-		    <img src="inc/photos/glasses.jpg">
-		    <img src="inc/photos/glasses.jpg">
-		    <img src="inc/photos/glasses.jpg">
-		    <img src="inc/photos/glasses.jpg">
-		    <img src="inc/photos/glasses.jpg">
-		    <img src="inc/photos/glasses.jpg">
-		    <img src="inc/photos/glasses.jpg">
-		    <img src="inc/photos/glasses.jpg">
-		    <img src="inc/photos/glasses.jpg">
-		    <img src="inc/photos/glasses.jpg">
-		    <img src="inc/photos/glasses.jpg">
+	    <div id="lozz" class="photoGrid">
+		    <!--<img src="inc/photos/glasses.jpg">-->
+		    
 	    </div>
 
-
+ <form id="mobile-camera-form" action="inc/upload_photo.php" method="post" enctype="multipart/form-data">
+                        <p id="mobile-camera" class="large button">Capture photo</p>
+                        <div class="mobile-camera">
+                            <input type="file" name="photo" accept="image/*" capture="camera" />
+                            <input type="text" id="photo-name" name="photo-name" />
+                        </div>  
+                    </form>
 	</div>
 	<!-- Included JS Files (Uncompressed) -->
 	<script src="js/libs/jquery-1.7.js"></script>

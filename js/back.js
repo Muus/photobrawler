@@ -273,6 +273,6 @@ AccountsView = Backbone.View.extend({
 });
 
 var lol = new GalleryView({ el: $("#lozz") });
-var lol = new AccountsView({ el: $("#lozzAcc") });
+//var lol = new AccountsView({ el: $("#lozzAcc") });
 
 //Lets do both checks inside the success for projects, because this seems to take much more time.
