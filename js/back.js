@@ -1,3 +1,14 @@
+var destroyMode = false;
+$('#ll').click(function(){
+            if(destroyMode){
+                destroyMode = false;
+
+                $('#kk').html('Delete mode is --- OFF --- ').css('color', 'green');
+            }else{
+                destroyMode = true;
+                $('#kk').html(' WARNING! Delete mode is --- ON --- ').css('color', 'red');
+            }
+        });
 PhotoModel = Backbone.Model.extend({
     urlRoot:'inc/api.php?give_me=photos',
     url: 'inc/api.php?give_me=photos',
@@ -35,6 +46,8 @@ PhotoView = Backbone.View.extend({
     initialize:function () {
         this.template = _.template(this.templateHtml);
         this.render();
+        
+        
     },
 
     render:function () {
@@ -55,6 +68,13 @@ PhotoView = Backbone.View.extend({
     
     onClick:function (e) {
         
+
+        if(destroyMode){
+            console.log('destroy');
+            this.onDestroy();
+        }else{
+            console.log('inte destroy');
+            alert('Time for great transition to single image');
         if ($('#bigPhoto').length > 0) {
             // Already one active photo
         } else {
@@ -63,6 +83,7 @@ PhotoView = Backbone.View.extend({
                 $(this).remove();
             });
         }
+            }
     },
     
     onDestroy:function () {

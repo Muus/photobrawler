@@ -5,6 +5,7 @@ if (isset($_SESSION['email'])) {
 	echo '
 <script>
 	var logged_in_user = '.$_SESSION["userid"].';
+	
 </script>
     <a href="logout/"><button>LOGOUT</button></a>
 	';
@@ -35,12 +36,13 @@ $db->connector();
 <body>
 	<div class="container">
 		<div class="topBanner">
-			<p id="ll">PhotoBrawler</p>
+			PhotoBrawler
 
             <?php if(isset($_SESSION['email'])){
                 echo 'Logged in';
             } ?>
-
+		<div style="float:right;"><i id="ll" class="icon-user"></i><p id="kk">Delete mode is --- OFF --- </p>
+	    </div>
 	    </div>
 	    
 	    <div id="photoGrid" class="photoGrid">
