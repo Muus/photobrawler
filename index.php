@@ -43,7 +43,7 @@ $db->connector();
 
 	    </div>
 	    
-	    <div class="photoGrid">
+	    <div id="photoGrid" class="photoGrid">
 		    <img src="inc/photos/glasses.jpg">
 		    <img src="inc/photos/glasses.jpg">
 		    <img src="inc/photos/glasses.jpg">

@@ -126,10 +126,10 @@ GalleryView = Backbone.View.extend({
                             console.log(newMod);
                             if(newMod.get('public') === 1){
                                 var view = new PhotoView({model:newMod});
-                                jQuery("#lozz").append(view.$el);
+                                jQuery("#photoGrid").append(view.$el);
                             } else {
                                 var view = new PhotoView({model:newMod});
-                                jQuery("#lozz").append(view.$el);
+                                jQuery("#photoGrid").append(view.$el);
                             }
                         }
                     }});
@@ -142,10 +142,10 @@ GalleryView = Backbone.View.extend({
                 console.log(elem.get('name'));
                 if(elem.get('public') === 1){
                     var view = new PhotoView({model:elem});
-                    jQuery("#lozz").append(view.$el);
+                    jQuery("#photoGrid").append(view.$el);
                 } else {
                     var view = new PhotoView({model:elem});
-                    jQuery("#lozz").append(view.$el);
+                    jQuery("#photoGrid").append(view.$el);
                 }
             });
         }});
@@ -272,7 +272,7 @@ AccountsView = Backbone.View.extend({
     },
 });
 
-var lol = new GalleryView({ el: $("#lozz") });
+var lol = new GalleryView({ el: $("#photoGrid") });
 //var lol = new AccountsView({ el: $("#lozzAcc") });
 
 //Lets do both checks inside the success for projects, because this seems to take much more time.
