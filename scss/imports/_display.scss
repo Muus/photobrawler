@@ -16,10 +16,6 @@
 		width: device-width;
 		zoom: 1.0;
 	}
-	
-	* {
-		@include box-sizing();
-	}
    
 	article,
 	aside,
