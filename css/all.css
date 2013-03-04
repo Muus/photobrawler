@@ -92,17 +92,17 @@ h3 {
 h1 {
   font-size: 32px;
   font-size: 2rem;
-  margin: 1.75em 0; }
+  margin: 0.75em 0; }
 
 h2 {
   font-size: 28px;
   font-size: 1.75rem;
-  margin: 1.7em 0; }
+  margin: 0.7em 0; }
 
 h3 {
   font-size: 24px;
   font-size: 1.5rem;
-  margin: 1.63333em 0; }
+  margin: 0.63333em 0; }
 
 b,
 strong {
