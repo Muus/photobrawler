@@ -35,7 +35,7 @@ $db->connector();
 <body>
 	<div class="container">
 		<div class="topBanner">
-			PhotoBrawler
+			<p id="ll">PhotoBrawler</p>
 
             <?php if(isset($_SESSION['email'])){
                 echo 'Logged in';

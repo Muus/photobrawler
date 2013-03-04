@@ -28,8 +28,8 @@ PhotoView = Backbone.View.extend({
     templateHtml:"",
 
     events:{
-        // "click":"onDestroy",
-        "click": "onClick",
+        "click":"onClick",
+        //"click": "onClick",
     },
 
     initialize:function () {
@@ -52,7 +52,9 @@ PhotoView = Backbone.View.extend({
         }
     },
     
+    
     onClick:function (e) {
+        
         if ($('#bigPhoto').length > 0) {
             // Already one active photo
         } else {
@@ -85,6 +87,7 @@ PhotoView = Backbone.View.extend({
         }});  
     },
     
+    
     onChangePublic:function () {
         alert('swipe');
         modelId = this.model.get('id');
@@ -94,6 +97,7 @@ PhotoView = Backbone.View.extend({
         this.render();
         //console.log(ourElem);
     },
+
 
 });
 
