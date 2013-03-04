@@ -13,12 +13,6 @@
   width: device-width;
   zoom: 1.0; }
 
-* {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box; }
-
 article,
 aside,
 details,

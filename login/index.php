@@ -26,24 +26,23 @@
                 </fieldset>
             </form>-->
             
-            <form class="form-horizontal" action="../inc/login/login.php" method="post">
-            	<div class="control-group">
-                	<label class="control-label" for="inputEmail">Email</label>
-                	<div class="controls">
-                  		<input type="text" id="email" placeholder="Email" name="email" required>
-                	</div>
-              	</div>
-              	<div class="control-group">
-                	<label class="control-label" for="inputPassword">Password</label>
-                	<div class="controls">
-                  		<input type="password" id="password" name="password" placeholder="Password" required>
-                	</div>
-              	</div>
-              	<div class="control-group">
-              		<div class="controls" id="actions">
-                  		<button type="submit" class="btn" id="submit">Sign in</button>
-                	</div>
-            	</div>
+            <form action="../inc/login/login.php" method="post">
+            	<fieldset>
+                
+                    <label>Email</label>
+                    <div class="input-prepend">
+                    	<span class="add-on"><i class="icon-user"></i></span>
+                		<input class="span3 control-label" type="text" id="email" placeholder="Email" name="email" required>
+                    </div>
+                    
+                    <label>Password</label>
+                    <div class="input-prepend">
+                    	<span class="add-on"><i class="icon-lock"></i></span>
+						<input class="span3 control-label" type="password" id="password" name="password" placeholder="Password" required>
+					</div><br />
+                  	<button type="submit" class="btn" id="submit">Sign in</button>
+                	
+            	</fieldset>
             </form>
         </div>
 	</div>
