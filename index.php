@@ -44,19 +44,14 @@ $db->connector();
 	    </div>
 	    
 	    <div id="photoGrid" class="photoGrid">
-		    <img src="inc/photos/glasses.jpg">
-		    <img src="inc/photos/glasses.jpg">
-		    <img src="inc/photos/glasses.jpg">
-		    <img src="inc/photos/glasses.jpg">
-		    <img src="inc/photos/glasses.jpg">
-		    <img src="inc/photos/glasses.jpg">	    
+		        
 	    </div>
 
 		<form id="mobile-camera-form" action="inc/upload_photo.php" method="post" enctype="multipart/form-data">
             <button id="mobile-camera" class="btn btn-large btn-primary" >Capture photo</button>
             <div class="mobile-camera">
                 <input type="file" name="photo" accept="image/*" capture="camera" />
-                <input type="text" id="photo-name" name="photo-name" />
+                <div style="display:none;"><input type="text" id="photo-name" name="photo-name" /></div>
             </div>
         </form>
 
