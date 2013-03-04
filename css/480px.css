@@ -36,6 +36,7 @@
     margin-top: 30px; }
 
   .photoGrid img {
+    position:relative;
     -moz-box-shadow: 0px 0px 2px black;
     -webkit-box-shadow: 0px 0px 2px black;
     box-shadow: 0px 0px 2px black;
@@ -44,4 +45,11 @@
     margin: 2px; }
 
   .loginCont {
-    margin-top: 80px; } }
+    margin-top: 80px; } 
+
+
+
+
+
+
+}

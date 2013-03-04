@@ -23,9 +23,9 @@ AccountsCollection = Backbone.Collection.extend({
 });
 
 PhotoView = Backbone.View.extend({
-    tagName:"img",
-    className:'',
-    templateHtml:"",
+    tagName:"div",
+    className:'photoInGallery',
+    templateHtml:"<img class='inGallery' src='<%= thumblink %>'><div class='del'></div>",
 
     events:{
         "click":"onClick",
@@ -42,8 +42,8 @@ PhotoView = Backbone.View.extend({
         this.link = this.model.get('link');
         this.id = this.model.get('id');
         if (this.model.get('public') === 1){
-            this.$el.attr('src', this.thumblink).attr('true_link', this.link).html(this.template(this.model.toJSON()));
-            this.$el.attr('src', this.thumblink).attr('thumb_id', this.id).html(this.template(this.model.toJSON()));
+            //this.$el.attr('src', this.thumblink).attr('true_link', this.link).html(this.template(this.model.toJSON()));
+            this.$el.attr('thumb_id', this.id).html(this.template(this.model.toJSON()));
         } else {
             this.$el.attr('src', this.thumblink).attr('true_link', this.link).attr('class', 'notPublic').html(this.template(this.model.toJSON()));
         }
