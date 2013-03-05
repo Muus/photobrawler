@@ -38,9 +38,25 @@ $db->connector();
 <body>
     <div id="yez" class="container" data-role="page">
         <div class="topBanner" data-role="header">
-           PhotoBrawler
-                 <div style="float:right;"><a href="#nav"><button id="llls" data-icon="gear" value="Tools"></button></a>
+        	<div style="float:left;"><a href="#nav"><button id="llls" data-icon="info" value="Info"></button></a></div>
+                    PhotoBrawler
+                    <!--<div style="float:right;"><a href=""><button id="llls" data-icon="gear" value="Tools"></button></a>
+                    </div>-->
+
+                    <div id="lko" class="btn-group" style="float:right; margin-right:100px;">
+                    	<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                    		Tools
+                    		<span class="caret"></span>
+                    	</a>
+                    	<ul class="dropdown-menu">
+                    		<!-- dropdown menu links -->
+                    		<li id="fees"><a id="delMode" href="#">Deletemode OFF</a></li>
+                    		<li><a id="pubMode" href="#">Public/Unpublic OFF</a></li>
+
+                    	</ul>
                     </div>
+
+
         </div>
 	    <div id="11" data-role="content">
             <form id="mobile-camera-form" action="inc/upload_photo.php" method="post" enctype="multipart/form-data">
@@ -61,12 +77,15 @@ $db->connector();
                 <li>QWERTY</li>
                 <li>ASDFGH</li>
             </ul>
+
             <?php
                 if (isset($_SESSION['email'])) {
                     echo'<div style="float:right;"><button id="lll" data-icon="delete" value="NO MODE"></button>
                     </div>';
                 }
                 ?>
+
+                <div id="infoPers"></div>
         </div>
     	<div data-role="footer"></div>
     
@@ -76,6 +95,7 @@ $db->connector();
 	<script src="js/libs/jquery-1.7.js"></script>
 	<script src="js/libs/underscore.js"></script>
 	<script src="js/libs/backbone.js"></script>
+	<script src="js/libs/bootstrap.js"></script>
     <script src="js/back.js"></script>
     <script src="js/libs/jquery.mobile-1.3.0.min.js"></script>
 

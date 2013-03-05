@@ -26,6 +26,43 @@ $('#lll').bind('click', function(){
 
     }
 });
+
+//new function with the dropdown
+$('#delMode ,#pubMode').bind('click', function(){
+    //If masterMode is 0 it means safe mode,
+    //This iterates between all the possible values to choose the next if the button is clicked
+    //it also changes the text on the button
+    console.log($(this).prop('id'));
+    if($(this).prop('id') == 'delMode'){
+
+        if(masterMode == 2){
+                    masterMode = 0;
+                    $(this).html('Delete mode is off');
+                }else if(masterMode == 0 || masterMode == 1){
+                        console.log('2');
+                masterMode = 2;
+                 $(this).html('Delete mode is on');
+                 $('#pubMode').html('Public/Unpublic mode is off');
+                }
+    }else if($(this).prop('id') == 'pubMode'){
+        if(masterMode == 1){
+            masterMode = 0;
+            $(this).html('Public/Unpublic mode is off');
+        }else if(masterMode == 0 || masterMode == 2){
+                console.log('1');
+        masterMode = 1;
+         $(this).html('Public/Unpublic mode is on');
+         $('#delMode').html('Delete mode is off');
+        }
+        
+    }
+
+
+    
+});
+
+
+
 //
 PhotoModel = Backbone.Model.extend({
     urlRoot:'inc/api.php?give_me=photos',
