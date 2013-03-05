@@ -60,13 +60,13 @@ $db->connector();
 		        
 	    </div>
 
-		<!--<form id="mobile-camera-form" action="inc/upload_photo.php" method="post" enctype="multipart/form-data">
-            <button id="mobile-camera" class="btn btn-large btn-primary" >Capture photo</button>
-            <div class="mobile-camera">
-                <input type="file" name="photo" accept="image/*" capture="camera" />
-                <div style="display:none;"><input type="text" id="photo-name" name="photo-name" /></div>
-            </div>
-        </form>-->
+		<!-- <form id="mobile-camera-form" action="inc/upload_photo.php" method="post" enctype="multipart/form-data"> -->
+            <!-- <button id="mobile-camera" class="btn btn-large btn-primary" >Capture photo</button> -->
+            <!-- <div class="mobile-camera"> -->
+                <!-- <input type="file" name="photo" accept="image/*" capture="camera" /> -->
+                <!-- <div style="display:none;"><input type="text" id="photo-name" name="photo-name" /></div> -->
+            <!-- </div> -->
+        <!-- </form> -->
 
 	</div>
 	<div data-role="footer"></div>
@@ -79,7 +79,7 @@ $db->connector();
 	<script src="js/libs/backbone.js"></script>
     <script src="js/back.js"></script>
     <script src="js/buttons.js"></script>
-    <script src="js/jquery.mobile-1.3.0.min.js"></script>
+    <script src="js/libs/jquery.mobile-1.3.0.min.js"></script>
 
 
 </body>
