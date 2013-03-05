@@ -1,25 +1,32 @@
+//This is a "temporary" variable which controls the admins possibility to (change public status, delete photos)
 var masterMode = 0;
-$('#lll').bind('touchend', function(){
-    
-            if(masterMode === 0 ){
-                    //safeMode
-                masterMode = 1;
-                
-                $('#lll').siblings('span').children('.ui-btn-text').html('UNPUBLIC MODE');
+//Bound button to click, should probably change back to click even with the 300ms delay, the click shoots if u start scrolling on top of a photo
+$('#lll').bind('click', function(){
+    //If masterMode is 0 it means safe mode,
+    //This iterates between all the possible values to choose the next if the button is clicked
+    //it also changes the text on the button
+    if(masterMode === 0 ){
+            //safeMode
 
-            }else if(masterMode === 1){
-                
+        masterMode = 1;//Set to "change public status"
+         //set text on button   
+         $('#lll').siblings('span').children('.ui-btn-text').html('UNPUBLIC MODE');
 
-                masterMode = 2;
-                $('#lll').siblings('span').children('.ui-btn-text').html('WARNING! DELETE MODE');
-                
-            }else if(masterMode === 2){
-                masterMode = 0;
-                $('#lll').siblings('span').children('.ui-btn-text').html('SAFE MODE');
+    }else if(masterMode === 1){//mastermode was change public
 
-            }
-        });
 
+        masterMode = 2;//Set to "delete mode"
+        //set text on button 
+        $('#lll').siblings('span').children('.ui-btn-text').html('WARNING! DELETE MODE');
+        
+    }else if(masterMode === 2){//mastermode was "deletemode"
+        masterMode = 0;//Set to "safe mode"
+        //set text on button 
+        $('#lll').siblings('span').children('.ui-btn-text').html('SAFE MODE');
+
+    }
+});
+//
 PhotoModel = Backbone.Model.extend({
     urlRoot:'inc/api.php?give_me=photos',
     url: 'inc/api.php?give_me=photos',
@@ -43,107 +50,106 @@ AccountsCollection = Backbone.Collection.extend({
     model:AccountsModel,
     url: 'inc/api.php?give_me=accounts',
 });
-
+//View for each photo in the grid on the first page, the galleryview loops out this view
 PhotoView = Backbone.View.extend({
     tagName:"div",
     className:'photoInGallery',
     templateHtml:"<img class='inGallery' src='<%= thumblink %>'><div class='del'></div>",
+//Probably should have click instead of click
+events:{
+    "click":"onClick",
 
-    events:{
-        "touchend":"onClick",
-        //"click": "onClick",
-    },
+},
 
-    initialize:function () {
-        this.template = _.template(this.templateHtml);
-        this.render();
-        
-        
-    },
+initialize:function () {
+    this.template = _.template(this.templateHtml);
+    this.render();
 
-    render:function () {
-        this.thumblink = this.model.get('thumblink');
-        this.link = this.model.get('link');
-        this.id = this.model.get('id');
-        if (this.model.get('public') === 1){
-            
-            this.$el.attr('thumb_id', this.id).attr('src', this.thumblink).attr('true_link', this.link).attr('class', '').html(this.template(this.model.toJSON()));
-        } else {
-            this.$el.attr('thumb_id', this.id).attr('src', this.thumblink).attr('true_link', this.link).attr('class', 'notPublic').html(this.template(this.model.toJSON()));
-        }
-        if (this.model.get('public') === 0 && !logged_in_user) {
-            $(this.$el).hide();
-        }
-        $.mobile.loading( 'hide' );
-    },
-    
-    
-    onClick:function (e) {
-        
 
-        if(masterMode === 2){
-            console.log('destroy');
-            this.onDestroy();
-        }else if(masterMode === 0){
-            $.mobile.loading( 'show' );  
-            console.log('inte destroy');
-            soekVaeg = 'singlephoto/index.php?phid='+this.model.get('link');
-            $.mobile.changePage( ""+soekVaeg+"", { transition: "slide"} );
-            /*alert('Time for great transition to single image');
-        if ($('#bigPhoto').length > 0) {
-            // Already one active photo
-        } else {
-            $('#lozz').append('<img id="bigPhoto" src="' + this.link + '" />');
-            $('#bigPhoto').on('click', function () {
-                $(this).remove();
-            });
-        }*/
-            }else if(masterMode === 1){
-                this.onChangePublic();
-            }
-    },
-    
-    onDestroy:function () {
-        modelId = this.model.get('id');
-        link = this.model.get('link');
-        thumblink = this.model.get('thumblink');
-        var el = this.$el;
-        //Need these headers to complete the desired delete
-        this.model.destroy({headers:{
-            'id' : modelId,
-            'link' : link,
-            'thumblink' : thumblink,
-        },
-        success: function(removed_person, data) {
-            $(el).hide();
-            console.log('jj');
-        },
-        error: function(aborted_person, response) {
-            console.log(aborted_person);
-            console.log(response);
-            // Error handling as needed.
-        }});  
-    },
-    
-    
-    onChangePublic:function () {
-        $.mobile.loading( 'show' );
-        modelId = this.model.get('id');
-        var el = this.$el;
-        if(this.model.get('public') == 1){
-        this.model.set('public', 0);
-        }else{
-        this.model.set('public', 1);
-        }
-        this.model.save();
-        this.render();
+},
 
-        //console.log(ourElem);
-    },
+render:function () {
+//Render the picture 
+this.thumblink = this.model.get('thumblink');
+this.link = this.model.get('link');
+this.id = this.model.get('id');
+//If the model is for public viewing
+if (this.model.get('public') === 1){
+    //dont set the class, or null it if it was notpublic before
+    //and some other stuff
+    this.$el.attr('thumb_id', this.id).attr('src', this.thumblink).attr('true_link', this.link).attr('class', '').html(this.template(this.model.toJSON()));
+    //Not for public viewing
+} else {
+    //set the class notpublic
+    //and some other stuff
+    this.$el.attr('thumb_id', this.id).attr('src', this.thumblink).attr('true_link', this.link).attr('class', 'notPublic').html(this.template(this.model.toJSON()));
+}
+if (this.model.get('public') === 0 && !logged_in_user) {
+    //if its not a public photo and the user is not logged in(admin), hide it.
+    $(this.$el).hide();
+}
+//if a loader was up, hide it
+$.mobile.loading( 'hide' );
+},
+
+
+onClick:function (e) {
+//2 means delete mode
+if(masterMode === 2){
+    console.log('destroy');
+    this.onDestroy();
+    //0 means safemode and should only transition to the single photoview
+}else if(masterMode === 0){
+    $.mobile.loading( 'show' );  
+    //which photo to show in the single view 
+    path = 'singlephoto/index.php?phid='+this.model.get('link');
+    //Transition to the single photo view
+    $.mobile.changePage( ""+path+"", { transition: "slide"} );
+    //1 means change public status
+}else if(masterMode === 1){
+    this.onChangePublic();
+}
+},
+
+onDestroy:function () {
+    modelId = this.model.get('id');
+    link = this.model.get('link');
+    thumblink = this.model.get('thumblink');
+    var el = this.$el;
+//Need these headers to complete the desired delete
+this.model.destroy({headers:{
+    'id' : modelId,
+    'link' : link,
+    'thumblink' : thumblink,
+},
+success: function(removed_person, data) {
+    $(el).hide();
+},
+error: function(aborted_person, response) {
+    console.log(aborted_person);
+    console.log(response);
+    // Error handling as needed.
+}});  
+},
+
+
+onChangePublic:function () {
+    $.mobile.loading( 'show' );
+    modelId = this.model.get('id');
+    var el = this.$el;
+//switch between 1 and 0 
+if(this.model.get('public') == 1){
+    this.model.set('public', 0);
+}else{
+    this.model.set('public', 1);
+}
+this.model.save();
+this.render();
+},
 
 
 });
-
+//This view is used to put out all the singlephotos after fetch
 GalleryView = Backbone.View.extend({
     tagName:'div',
     className:'',
@@ -151,52 +157,20 @@ GalleryView = Backbone.View.extend({
     initialize:function () {
         this.template = _.template(this.templateHtml);
         this.render();
-        console.log('fee');
-        console.log(this.photoCollection);
     },
-    
+
     render:function () {
         this.$el.html(this.template());
         var _this = this;
         this.photoCollection = new PhotoCollection();
         this.photoCollection.fetch({data:{'limit':0}, success:function () {
-            var standardLength = _this.photoCollection.models.length;
-            var newLength;
-            function rerun(){
-                setTimeout(function(){
-                    _this.photoCollection.fetch({data:{'limit':0}, success:function () {
-                        newLength = _this.photoCollection.models.length;
-                        if(newLength > standardLength){
-                            standardLength = newLength;
-                            console.log('tja');
-                            newMod = _this.photoCollection.last();
-                            console.log(newMod);
-                            if(newMod.get('public') === 1){
-                                var view = new PhotoView({model:newMod});
-                                jQuery("#photoGrid").append(view.$el);
-                            } else {
-                                var view = new PhotoView({model:newMod});
-                                jQuery("#photoGrid").append(view.$el);
-                            }
-                        }
-                    }});
-                    rerun();
-                },1000);
-            }
-            //rerun();
-            console.log(standardLength);
-            _.each(_this.photoCollection.models, function (elem) {
-                console.log(elem.get('name'));
-                if(elem.get('public') === 1){
-                    var view = new PhotoView({model:elem});
-                    jQuery("#photoGrid").append(view.$el);
-                } else {
-                    var view = new PhotoView({model:elem});
-                    jQuery("#photoGrid").append(view.$el);
-                }
-            });
-        }});
-        console.log('render');
+    //Put out all of the photos in seperate views
+    _.each(_this.photoCollection.models, function (elem) {
+        var view = new PhotoView({model:elem});
+        jQuery("#photoGrid").append(view.$el);
+        
+    });
+}});
     },
 });
 
@@ -214,53 +188,53 @@ SingleAccountsView = Backbone.View.extend({
     +'<input name="country" type="" value="<%= country %>">'
     +'<input name="info" type="" value="<%= info %>">',
     events:{
-        //"click":"onDestroy",
-        "focusout":"onBlur",
-        "focus":"onFocus",
-        "click":"onFocus",
-    },
+//"click":"onDestroy",
+"focusout":"onBlur",
+"focus":"onFocus",
+"click":"onFocus",
+},
 
-    initialize:function () {
-        this.template = _.template(this.templateHtml);
-        this.render();
-    },
+initialize:function () {
+    this.template = _.template(this.templateHtml);
+    this.render();
+},
 
-    render:function () {
-    	//this.thumblink = this.model.get('thumblink');
-        //this.link = this.model.get('link');
-        this.$el.html(this.template(this.model.toJSON()));
-    },
+render:function () {
+//this.thumblink = this.model.get('thumblink');
+//this.link = this.model.get('link');
+this.$el.html(this.template(this.model.toJSON()));
+},
 
-    onBlur:function () {
-        console.log('blurred');
-        disName = $(this);
-        console.log(disName);
-        this.model.set('phonenumber', $('[name=phonenumber]').val() );
-        this.model.set('street_address', $('[name=street_address]').val() );
-        this.model.set('postal_code', $('[name=postal_code]').val() );
-        this.model.set('city', $('[name=city]').val() );
-        this.model.set('province', $('[name=province]').val() );
-        this.model.set('state', $('[name=state]').val() );
-        this.model.set('country', $('[name=country]').val() );
-        this.model.set('info', $('[name=info]').val() );
-        this.model.save();
-    },
+onBlur:function () {
+    console.log('blurred');
+    disName = $(this);
+    console.log(disName);
+    this.model.set('phonenumber', $('[name=phonenumber]').val() );
+    this.model.set('street_address', $('[name=street_address]').val() );
+    this.model.set('postal_code', $('[name=postal_code]').val() );
+    this.model.set('city', $('[name=city]').val() );
+    this.model.set('province', $('[name=province]').val() );
+    this.model.set('state', $('[name=state]').val() );
+    this.model.set('country', $('[name=country]').val() );
+    this.model.set('info', $('[name=info]').val() );
+    this.model.save();
+},
 
-    onFocus:function () {
-        console.log('focused');
-        disName = $(this).text();
-        console.log(disName);
-    },
-    
-    onChangePublic:function () {
-        alert('swipe');
-        modelId = this.model.get('id');
-        var el = this.$el;
-        this.model.set('public', 0);
-        this.model.save();
-        this.render();
-        //console.log(ourElem);
-    },
+onFocus:function () {
+    console.log('focused');
+    disName = $(this).text();
+    console.log(disName);
+},
+
+onChangePublic:function () {
+    alert('swipe');
+    modelId = this.model.get('id');
+    var el = this.$el;
+    this.model.set('public', 0);
+    this.model.save();
+    this.render();
+//console.log(ourElem);
+},
 });
 
 AccountsView = Backbone.View.extend({
@@ -275,44 +249,18 @@ AccountsView = Backbone.View.extend({
         console.log('fee');
         console.log(this.accountsCollection);
     },
-    
+
     render:function () {
         this.$el.html(this.template());
         var _this = this;
         this.accountsCollection = new AccountsCollection();
         this.accountsCollection.fetch({data:{'limit':0}, success:function () {
-            var standardLength = _this.accountsCollection.models.length;
-            var newLength;
-            /*
-            function rerun(){
-                setTimeout(function(){
-                    _this.photoCollection.fetch({data:{'limit':0}, success:function () {
-                        newLength = _this.photoCollection.models.length;
-                        if(newLength > standardLength){
-                            standardLength = newLength;
-                            console.log('tja');
-                            newMod = _this.photoCollection.last();
-                            console.log(newMod);
-                            if(newMod.get('public') === 1){
-                                var view = new PhotoView({model:newMod});
-                                jQuery("#lozz").append(view.$el);
-                            }else{
-                                var view = new PhotoView({model:newMod});
-                                jQuery("#lozz").append(view.$el);
-                            }
-                        }
-                    }});
-                    rerun();
-                },1000);
-            }
-            rerun();*/
-            console.log(standardLength);
             _.each(_this.accountsCollection.models, function (elem) {
                 console.log(elem.get('email'));
                 var view = new SingleAccountsView({model:elem});
-                //Change later to other div
-                jQuery("#lozz").append(view.$el);
-            });
+        //Change later to other div
+        jQuery("#lozz").append(view.$el);
+    });
 
         }});
         console.log('render');
