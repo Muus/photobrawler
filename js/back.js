@@ -1,17 +1,22 @@
-var destroyMode = false;
-$('#lll').click(function(){
+var masterMode = 0;
+$('#lll').bind('touchend', function(){
     
-            if(destroyMode){
-                destroyMode = false;
+            if(masterMode === 0 ){
+                    //safeMode
+                masterMode = 1;
                 
-                $('#lll').siblings('span').children('.ui-btn-text').html('Delete mode is --- OFF --- ');
+                $('#lll').siblings('span').children('.ui-btn-text').html('UNPUBLIC MODE');
 
-            }else{
+            }else if(masterMode === 1){
                 
 
-                destroyMode = true;
-                $('#lll').siblings('span').children('.ui-btn-text').html('WARNING! Delete mode is --- ON --- ');
+                masterMode = 2;
+                $('#lll').siblings('span').children('.ui-btn-text').html('WARNING! DELETE MODE');
                 
+            }else if(masterMode === 2){
+                masterMode = 0;
+                $('#lll').siblings('span').children('.ui-btn-text').html('SAFE MODE');
+
             }
         });
 
@@ -45,7 +50,7 @@ PhotoView = Backbone.View.extend({
     templateHtml:"<img class='inGallery' src='<%= thumblink %>'><div class='del'></div>",
 
     events:{
-        "click":"onClick",
+        "touchend":"onClick",
         //"click": "onClick",
     },
 
@@ -61,24 +66,25 @@ PhotoView = Backbone.View.extend({
         this.link = this.model.get('link');
         this.id = this.model.get('id');
         if (this.model.get('public') === 1){
-            //this.$el.attr('src', this.thumblink).attr('true_link', this.link).html(this.template(this.model.toJSON()));
-            this.$el.attr('thumb_id', this.id).html(this.template(this.model.toJSON()));
+            
+            this.$el.attr('thumb_id', this.id).attr('src', this.thumblink).attr('true_link', this.link).attr('class', '').html(this.template(this.model.toJSON()));
         } else {
-            this.$el.attr('src', this.thumblink).attr('true_link', this.link).attr('class', 'notPublic').html(this.template(this.model.toJSON()));
+            this.$el.attr('thumb_id', this.id).attr('src', this.thumblink).attr('true_link', this.link).attr('class', 'notPublic').html(this.template(this.model.toJSON()));
         }
         if (this.model.get('public') === 0 && !logged_in_user) {
             $(this.$el).hide();
         }
+        $.mobile.loading( 'hide' );
     },
     
     
     onClick:function (e) {
         
 
-        if(destroyMode){
+        if(masterMode === 2){
             console.log('destroy');
             this.onDestroy();
-        }else{
+        }else if(masterMode === 0){
             $.mobile.loading( 'show' );  
             console.log('inte destroy');
             soekVaeg = 'singlephoto/index.php?phid='+this.model.get('link');
@@ -92,6 +98,8 @@ PhotoView = Backbone.View.extend({
                 $(this).remove();
             });
         }*/
+            }else if(masterMode === 1){
+                this.onChangePublic();
             }
     },
     
@@ -119,12 +127,17 @@ PhotoView = Backbone.View.extend({
     
     
     onChangePublic:function () {
-        alert('swipe');
+        $.mobile.loading( 'show' );
         modelId = this.model.get('id');
         var el = this.$el;
+        if(this.model.get('public') == 1){
         this.model.set('public', 0);
+        }else{
+        this.model.set('public', 1);
+        }
         this.model.save();
         this.render();
+
         //console.log(ourElem);
     },
 

@@ -23,7 +23,7 @@
             
 
 
-		<div style="float:right;"><i id="ll" class="icon-user"></i><p id="kk">Delete mode is --- OFF --- </p></div>
+		
        </div><!-- /header -->
        <div data-role="content">
 

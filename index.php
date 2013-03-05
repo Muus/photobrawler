@@ -43,9 +43,14 @@ $db->connector();
 		<div class="topBanner" data-role="header">
 			PhotoBrawler
 
-            
-		<div style="float:right;"><button id="lll" data-icon="delete" value="Delete mode is OFF"></button>
-	    </div>
+        <?php
+        	if (isset($_SESSION['email'])) {
+
+        		echo'<div style="float:right;"><button id="lll" data-icon="delete" value="NO MODE"></button>
+	    </div>';
+        	}
+         ?>    
+		
 	    
 
 	</div>
