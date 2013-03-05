@@ -6,8 +6,9 @@ $database_name = $_POST['photo-name'];
 $new_filename = strtolower(basename($_FILES['photo']['name']));
 $new_filename = str_replace(" ", "_", $new_filename);
 
-$target_path = "photos/";
-$target_path = $target_path . $new_filename; 
+$target_path = "../uploads/photos/";
+$target_path = $target_path . $new_filename;
+echo '$target_path: ' . $target_path . '<br/>';
 if (file_exists("photos/" . $_FILES['photo']['name'])) {
     echo 'A file with that name already exists!';
 } else {
@@ -17,19 +18,19 @@ if (file_exists("photos/" . $_FILES['photo']['name'])) {
 
         $x = $new_filename;
         $y = "2";
-        $z = "inc/".$target_path;
+        $z = "uploads/photos/".$x;
 
         $mysqli = new mysqli("localhost", "root", "", "photobrawler");
         if ($mysqli->connect_errno) {
             echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
         }
 
-        $thumblink = "inc/thumbnails/" . $x;
+        $thumblink = "uploads/thumbnails/" . $x;
 
 		$image = new SimpleImage();
-		$image->load("photos/" . $x);
+		$image->load("../uploads/photos/" . $x);
 		$image->resize(100, 100);
-		$image->save("thumbnails/" . $x); 
+		$image->save("../uploads/thumbnails/" . $x); 
 
         // make a call in db.
         $be_public = 1;

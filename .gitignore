@@ -59,4 +59,5 @@ test/version_tmp
 tmp
 test/.sass-cache/*
 test/stylesheets/*
-
+uploads/photos/*
+uploads/thumbnails/*

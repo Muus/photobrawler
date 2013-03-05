@@ -1,22 +1,14 @@
-$(function () {
-    $('#mobile-camera').click(function () {
-        $('.mobile-camera > input[type="file"]').trigger('click');
+$(function () { 
+   
+    $('#mobile-camera').click(function (e) {
+        e.preventDefault();
+        $('.ui-input-text > input[type="file"]').trigger('click');
     });
 
-    $('.mobile-camera > input[type="file"]').change(function (e) {
+    $('.ui-input-text > input[type="file"]').change(function () {
         var photoName = prompt('Name your photo');
         $('#photo-name').val(photoName);
         $("#mobile-camera-form")[0].submit();
-    });
-
-    $('#mobile-gallery').click(function () {
-        $('.mobile-gallery > input[type="file"]').trigger('click');
-    });
-
-    $('.mobile-gallery > input[type="file"]').change(function () {
-        var photoName = prompt('Name your photo');
-        $('#photo-name').val(photoName);
-        $("#mobile-gallery-form")[0].submit();
     });
 
 });

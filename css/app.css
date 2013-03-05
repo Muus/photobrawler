@@ -1,11 +1,3 @@
-div.mobile-camera > input[type='file'] {
-    opacity:0;
-}
-
-div.mobile-gallery > input[type='file'] {
-    opacity:0;
-}
-
 .notPublic {
 	opacity:0.2;
 	filter:alpha(opacity=40);
