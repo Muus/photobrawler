@@ -1,14 +1,20 @@
 var destroyMode = false;
-$('#ll').click(function(){
+$('#lll').click(function(){
+    
             if(destroyMode){
                 destroyMode = false;
+                
+                $('#lll').siblings('span').children('.ui-btn-text').html('Delete mode is --- OFF --- ');
 
-                $('#kk').html('Delete mode is --- OFF --- ').css('color', 'green');
             }else{
+                
+
                 destroyMode = true;
-                $('#kk').html(' WARNING! Delete mode is --- ON --- ').css('color', 'red');
+                $('#lll').siblings('span').children('.ui-btn-text').html('WARNING! Delete mode is --- ON --- ');
+                
             }
         });
+
 PhotoModel = Backbone.Model.extend({
     urlRoot:'inc/api.php?give_me=photos',
     url: 'inc/api.php?give_me=photos',
@@ -73,8 +79,11 @@ PhotoView = Backbone.View.extend({
             console.log('destroy');
             this.onDestroy();
         }else{
+            $.mobile.loading( 'show' );  
             console.log('inte destroy');
-            alert('Time for great transition to single image');
+            soekVaeg = 'singlephoto/index.php?phid='+this.model.get('link');
+            $.mobile.changePage( ""+soekVaeg+"", { transition: "slide"} );
+            /*alert('Time for great transition to single image');
         if ($('#bigPhoto').length > 0) {
             // Already one active photo
         } else {
@@ -82,7 +91,7 @@ PhotoView = Backbone.View.extend({
             $('#bigPhoto').on('click', function () {
                 $(this).remove();
             });
-        }
+        }*/
             }
     },
     
@@ -161,7 +170,7 @@ GalleryView = Backbone.View.extend({
                     rerun();
                 },1000);
             }
-            rerun();
+            //rerun();
             console.log(standardLength);
             _.each(_this.photoCollection.models, function (elem) {
                 console.log(elem.get('name'));

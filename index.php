@@ -12,9 +12,11 @@ if (isset($_SESSION['email'])) {
 
 	echo 'user is logged in';
 	
-}else{
+}
+else{
+	//<a href="login/"><button>LOGIN</button></a>
     echo '
-    <a href="login/"><button>LOGIN</button></a>
+    
 <script>
     var logged_in_user = false;
 </script>
@@ -34,29 +36,35 @@ $db->connector();
 	?>
 </head>
 <body>
-	<div class="container">
-		<div class="topBanner">
+	
+	
+	<div id="yez" class="container" data-role="page">
+
+		<div class="topBanner" data-role="header">
 			PhotoBrawler
 
-            <?php if(isset($_SESSION['email'])){
-                echo 'Logged in';
-            } ?>
-		<div style="float:right;"><i id="ll" class="icon-user"></i><p id="kk">Delete mode is --- OFF --- </p>
+            
+		<div style="float:right;"><button id="lll" data-icon="delete" value="Delete mode is OFF"></button>
 	    </div>
-	    </div>
+	    
+
+	</div>
+	    <div id="11" data-role="content">
 	    
 	    <div id="photoGrid" class="photoGrid">
 		        
 	    </div>
 
-		<form id="mobile-camera-form" action="inc/upload_photo.php" method="post" enctype="multipart/form-data">
+		<!--<form id="mobile-camera-form" action="inc/upload_photo.php" method="post" enctype="multipart/form-data">
             <button id="mobile-camera" class="btn btn-large btn-primary" >Capture photo</button>
             <div class="mobile-camera">
                 <input type="file" name="photo" accept="image/*" capture="camera" />
                 <div style="display:none;"><input type="text" id="photo-name" name="photo-name" /></div>
             </div>
-        </form>
+        </form>-->
 
+	</div>
+	<div data-role="footer"></div>
 	</div>
 	<!-- Included JS Files (Uncompressed) -->
 	<script src="js/libs/jquery-1.7.js"></script>
@@ -66,5 +74,8 @@ $db->connector();
 	<script src="js/libs/backbone.js"></script>
     <script src="js/back.js"></script>
     <script src="js/buttons.js"></script>
+    <script src="js/jquery.mobile-1.3.0.min.js"></script>
+
+
 </body>
 </html>

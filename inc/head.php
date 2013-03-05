@@ -14,7 +14,7 @@
 <!-- Included CSS Files -->
 <link rel="stylesheet" href="css/app.css">
 <link rel="stylesheet" href="css/bootstrap.css">
-
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" />
 <!-- eCSSential stylesheets -->
 <script src="js/libs/ecssential.min.js"></script>
 <script>
