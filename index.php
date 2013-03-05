@@ -38,13 +38,9 @@ $db->connector();
 <body>
     <div id="yez" class="container" data-role="page">
         <div class="topBanner" data-role="header">
-            <a href="#nav">PhotoBrawler</a>
-                <?php
-                if (isset($_SESSION['email'])) {
-                    echo'<div style="float:right;"><button id="lll" data-icon="delete" value="NO MODE"></button>
-                    </div>';
-                }
-                ?>
+           PhotoBrawler
+                 <div style="float:right;"><a href="#nav"><button id="llls" data-icon="gear" value="Tools"></button></a>
+                    </div>
         </div>
 	    <div id="11" data-role="content">
             <form id="mobile-camera-form" action="inc/upload_photo.php" method="post" enctype="multipart/form-data">
@@ -60,11 +56,17 @@ $db->connector();
         
             </div>
 	    </div>
-        <div data-role="panel" data-display="push" id="nav">
+        <div data-role="panel" data-display="push" id="nav" data-position="right">
             <ul>
                 <li>QWERTY</li>
                 <li>ASDFGH</li>
             </ul>
+            <?php
+                if (isset($_SESSION['email'])) {
+                    echo'<div style="float:right;"><button id="lll" data-icon="delete" value="NO MODE"></button>
+                    </div>';
+                }
+                ?>
         </div>
     	<div data-role="footer"></div>
     
