@@ -72,9 +72,7 @@ $db->connector();
         
             </div>
         </div>
-        
-        <input type="file" accept="image/*" capture="camera" />
-        
+         
         <?php 
         include('inc/info_panel.php');
         ?>
