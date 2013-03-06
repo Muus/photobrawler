@@ -296,7 +296,7 @@ AccountsView = Backbone.View.extend({
                 console.log(elem.get('email'));
                 var view = new SingleAccountsView({model:elem});
         //Change later to other div
-        jQuery("#lozz").append(view.$el);
+        jQuery("#infoPers").append(view.$el);
     });
 
         }});
@@ -305,6 +305,6 @@ AccountsView = Backbone.View.extend({
 });
 
 var lol = new GalleryView({ el: $("#photoGrid") });
-//var lol = new AccountsView({ el: $("#lozzAcc") });
+var lol = new AccountsView({ el: $("#infoPers") });
 
 //Lets do both checks inside the success for projects, because this seems to take much more time.
