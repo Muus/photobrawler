@@ -49,7 +49,8 @@ $db->connector();
                     		<span class="caret"></span>
                     	</a>
                     	<ul class="dropdown-menu">
-                    		<!-- dropdown menu links -->
+                            <!-- dropdown menu links -->
+                            <li id="mobileCamera"><a href="#">Capture photo</a></li>
                     		<li id="fees"><a id="delMode" href="#">Deletemode OFF</a></li>
                     		<li><a id="pubMode" href="#">Public/Unpublic OFF</a></li>
 
@@ -60,7 +61,6 @@ $db->connector();
         </div>
 	    <div id="11" data-role="content">
             <form id="mobileCameraForm" action="/photobrawler/inc/upload_photo.php" method="post" enctype="multipart/form-data">
-                <button id="mobileCamera">Capture photo</button>
                 <div class="mobile-camera">
                     <div style="position:absolute; left:-9999px"> 
                         <input id="fileSelect" type="file" name="photo" accept="image/*" capture="camera" />
