@@ -150,9 +150,18 @@ if(masterMode === 2){
     //your script, and potentially testing you are on a page requiring it
     $.mobile.changePage( ""+path+"", { transition: "slide"} );
 
-    //$.mobile.loadPage( ""+path+"" );
+    
+
+//$.mobile.loadPage( ""+path+"" );
     //Transition to the single photo view
     //$.mobile.changePage( "#yesss", { transition: "slide"} );
+    console.log('after changepage');
+    var photoDesc = this.model.get('description');
+    console.log(photoDesc);
+    setTimeout(function () {
+        console.log('lol');
+    }, 2000);
+
     //1 means change public status
 }else if(masterMode === 1){
     this.onChangePublic();
