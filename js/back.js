@@ -1,3 +1,5 @@
+
+
 //This is a "temporary" variable which controls the admins possibility to (change public status, delete photos)
 var masterMode = 0;
 //Bound button to click, should probably change back to click even with the 300ms delay, the click shoots if u start scrolling on top of a photo
