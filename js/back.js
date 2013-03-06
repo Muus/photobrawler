@@ -144,6 +144,12 @@ if(masterMode === 2){
     path = 'singlephoto/index.php?phid='+this.model.get('link')+'&name='+this.model.get('name');
     //Transition to the single photo view
     $.mobile.changePage( ""+path+"", { transition: "slide"} );
+    console.log('after changepage');
+    var photoDesc = this.model.get('description');
+    console.log(photoDesc);
+    setTimeout(function () {
+        console.log('lol');
+    }, 2000);
     //1 means change public status
 }else if(masterMode === 1){
     this.onChangePublic();
