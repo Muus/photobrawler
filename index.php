@@ -72,7 +72,7 @@ $db->connector();
         
             </div>
 	    </div>
-        <div data-role="panel" data-display="push" id="nav" data-position="right">
+        <div data-role="panel" data-display="push" id="nav">
             <ul>
                 <li>QWERTY</li>
                 <li>ASDFGH</li>
