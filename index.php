@@ -59,19 +59,22 @@ $db->connector();
 
         </div>
 	    <div id="11" data-role="content">
-            <form id="mobile-camera-form" action="inc/upload_photo.php" method="post" enctype="multipart/form-data">
-                <button id="mobile-camera">Capture photo</button>
+            <form id="mobileCameraForm" action="inc/upload_photo.php" method="post" enctype="multipart/form-data">
+                <button id="mobileCamera">Capture photo</button>
                 <div class="mobile-camera">
                     <div style="display:none;">
-                        <input type="file" name="photo" accept="image/*" capture="camera" />
-                        <input type="text" id="photo-name" name="photo-name" />
+                        <input id="fileSelect" type="file" name="photo" accept="image/*" capture="camera" />
+                        <input id="photoName" type="text" name="photo-name" />
                     </div>
                 </div>
             </form>
             <div id="photoGrid" class="photoGrid">	        
         
             </div>
-	    </div>
+        </div>
+        
+        <input type="file" accept="image/*" capture="camera" />
+        
         <?php 
         include('inc/info_panel.php');
         ?>
