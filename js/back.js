@@ -141,7 +141,7 @@ if(masterMode === 2){
 }else if(masterMode === 0){
     $.mobile.loading( 'show' );  
     //which photo to show in the single view 
-    path = 'singlephoto/index.php?phid='+this.model.get('link');
+    path = 'singlephoto/index.php?phid='+this.model.get('link')+'&name='+this.model.get('name');
     //Transition to the single photo view
     $.mobile.changePage( ""+path+"", { transition: "slide"} );
     //1 means change public status
