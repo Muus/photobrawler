@@ -76,7 +76,7 @@ $db->connector();
         <?php 
         include('inc/info_panel.php');
         ?>
-    	<div data-role="footer"></div>
+    	<div data-role="footer" style="display:none;"></div>
     
         </div>
     </div>
