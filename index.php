@@ -59,7 +59,7 @@ $db->connector();
 
         </div>
 	    <div id="11" data-role="content">
-            <form id="mobileCameraForm" action="inc/upload_photo.php" method="post" enctype="multipart/form-data">
+            <form id="mobileCameraForm" action="/photobrawler/inc/upload_photo.php" method="post" enctype="multipart/form-data">
                 <button id="mobileCamera">Capture photo</button>
                 <div class="mobile-camera">
                     <div style="position:absolute; left:-9999px"> 
