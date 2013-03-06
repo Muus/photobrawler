@@ -62,7 +62,7 @@ $db->connector();
             <form id="mobileCameraForm" action="inc/upload_photo.php" method="post" enctype="multipart/form-data">
                 <button id="mobileCamera">Capture photo</button>
                 <div class="mobile-camera">
-                    <div style="display:none;">
+                    <div style="position:absolute; left:-9999px"> 
                         <input id="fileSelect" type="file" name="photo" accept="image/*" capture="camera" />
                         <input id="photoName" type="text" name="photo-name" />
                     </div>
