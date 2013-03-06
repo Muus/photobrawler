@@ -212,12 +212,7 @@ GalleryView = Backbone.View.extend({
 }});
     },
 });
-
-//Accountmodel n collection
-SingleAccountsView = Backbone.View.extend({
-    tagName:"form",
-    className:'',
-    templateHtml:'<input name="email" type="email" value="<%= email %>">'
+tempIfLoggedIn = '<input name="email" type="email" value="<%= email %>">'
     +'<input name="phonenumber" value="<%= phonenumber %>">'
     +'<input name="street_address" value="<%= street_address %>">'
     +'<input name="postal_code" type="" value="<%= postal_code %>">'
@@ -225,7 +220,28 @@ SingleAccountsView = Backbone.View.extend({
     +'<input name="province" type="" value="<%= province %>">'
     +'<input name="state" type="" value="<%= state %>">'
     +'<input name="country" type="" value="<%= country %>">'
-    +'<input name="info" type="" value="<%= info %>">',
+    +'<input name="info" type="" value="<%= info %>">';
+
+tempIfNot = '<p> <%= email %></p>'
+    +'<p> <%= phonenumber %></p>'
+    +'<p> <%= street_address %></p>'
+    +'<p> <%= postal_code %></p>'
+    +'<p> <%= city %></p>'
+    +'<p> <%= province %></p>'
+    +'<p> <%= state %></p>'
+    +'<p> <%= country %></p>'
+    +'<p> <%= info %></p>'
+//Accountmodel n collection
+if(!logged_in_user){
+
+    useForTemp = tempIfNot;
+}else{
+    useForTemp =tempIfLoggedIn;
+}
+SingleAccountsView = Backbone.View.extend({
+    tagName:"form",
+    className:'',
+    templateHtml: useForTemp,
     events:{
 //"click":"onDestroy",
 "focusout":"onBlur",
