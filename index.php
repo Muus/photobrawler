@@ -45,7 +45,7 @@ $db->connector();
 
                     <?php if (isset($_SESSION['email'])) { ?>
                     <div id="lko" class="btn-group" style="float:right; margin-right:100px;">
-                    	<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                    	<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
                     		Tools
                     		<span class="caret"></span>
                     	</a>
