@@ -88,7 +88,7 @@ AccountsCollection = Backbone.Collection.extend({
 PhotoView = Backbone.View.extend({
     tagName:"div",
     className:'photoInGallery',
-    templateHtml:"<div style='width:49%;'> <img class='inGallery' src='<%= thumblink %>'><div class='del'></div></div>",
+    templateHtml:"<img class='inGallery' src='<%= thumblink %>'><div class='del'></div>",
 //Probably should have click instead of click
 events:{
     "click":"onClick",
