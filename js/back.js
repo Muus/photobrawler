@@ -146,16 +146,8 @@ if(masterMode === 2){
 			
       setTimeout(function () {
         $('#dude').imagesLoaded({
-    done: function ($images) {$.mobile.changePage( "#yesss", { transition: "slide"} );},
-    fail: function ($images, $proper, $broken) {},
-    always: function () {},
-    progress: function (isBroken, $images, $proper, $broken) {console.log('something up');}
-});
-    }, 100);    
- 
-   
-
-    //your script, and potentially testing you are on a page requiring it
+    done: function ($images) {$.mobile.changePage( "#yesss", { transition: "slide"} );
+	//your script, and potentially testing you are on a page requiring it
     
 		
 			
@@ -179,6 +171,18 @@ if(masterMode === 2){
     setTimeout(function () {
         console.log('lol');
     }, 2000);
+	
+	},
+    fail: function ($images, $proper, $broken) {},
+    always: function () {},
+    progress: function (isBroken, $images, $proper, $broken) {console.log('something up');}
+});
+
+   
+
+    
+    }, 200);    
+ 
 
     //1 means change public status
 }else if(masterMode === 1){
