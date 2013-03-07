@@ -75,6 +75,7 @@ else{
     <script src="js/back.js"></script>
     <script src="js/simpledialog.js"></script>
     <script src="js/buttons.js"></script>
+    <script src="js/imgload.js"></script>
 
 </body>
 </html>

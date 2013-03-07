@@ -4,6 +4,7 @@
 //include_once ('../inc/head2.php');
 	$dat_link = $_GET['phid'];
     $photo_name = $_GET['name'];
+	 
 	?>
 </head>
 <body>
@@ -15,7 +16,7 @@
 
 			<div class="photoFrame">
 				<div class="photoSingel thumbnail">
-					<img src="<?php echo '../'.$dat_link; ?>" alt=" " />
+					<img id="dude" src="<?php echo '../'.$dat_link;?>" alt=" " />
 
                     <h3 class="photoTitle"><?php echo $photo_name; ?></h3>
 					<article class="photoDescription" id="photoDesc"></article>
