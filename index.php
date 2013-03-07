@@ -33,7 +33,8 @@ $db->connector();
 <head>
 	<?php
 		include_once ('inc/head.php');
-	?>
+    ?>
+    <link rel="stylesheet" type="text/css" href="css/jquery.mobile.simpledialog.min.css" /> 
 </head>
 <body>
     <div id="yez" class="container" data-role="page">
@@ -59,7 +60,6 @@ $db->connector();
                     </div>
                     <?php } else {} ?>
 
-                    <a style="position:absolute; left:-9988px;" id="deleteMode" href="delete-dialog.php" data-rel="dialog">Delete Mode</a>
         </div>
 	    <div id="11" data-role="content">
             <form id="mobileCameraForm" action="/photobrawler/inc/upload_photo.php" method="post" enctype="multipart/form-data">
@@ -89,7 +89,8 @@ $db->connector();
 	<script src="js/libs/bootstrap.js"></script>
     <script src="js/back.js"></script>
     <script src="js/libs/jquery.mobile-1.3.0.min.js"></script>
-
+    <script src="js/libs/jquery.mobile.simpledialog2.min.js"></script>
+    <script src="js/simpledialog.js"></script>
     <script src="js/buttons.js"></script>
 
 </body>
