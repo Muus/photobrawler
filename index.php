@@ -14,18 +14,8 @@ if (isset($_SESSION['email'])) {
 	
 }
 else{
-	//<a href="login/"><button>LOGIN</button></a>
-    echo '
-    
-<script>
-    var logged_in_user = false;
-</script>
-	';
-
+    echo '<script> var logged_in_user = false; </script>';
 }
-include('inc/dbClass.php');
-$db = new Db();
-$db->connector();
 ?>
 
 <!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]-->
@@ -41,6 +31,7 @@ $db->connector();
         <div class="topBanner" data-role="header">
         	<div style="float:left;"><a href="#nav"><button id="llls" data-icon="info" value="Info"></button></a></div>
                     PhotoBrawler
+
                     <!--<div style="float:right;"><a href=""><button id="llls" data-icon="gear" value="Tools"></button></a>
                     </div>-->
 
