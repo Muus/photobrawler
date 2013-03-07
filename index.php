@@ -43,6 +43,7 @@ $db->connector();
                     <!--<div style="float:right;"><a href=""><button id="llls" data-icon="gear" value="Tools"></button></a>
                     </div>-->
 
+                    <?php if (isset($_SESSION['email'])) { ?>
                     <div id="lko" class="btn-group" style="float:right; margin-right:100px;">
                     	<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
                     		Tools
@@ -56,13 +57,14 @@ $db->connector();
 
                     	</ul>
                     </div>
+                    <?php } else {} ?>
 
-
+                    <a style="position:absolute; left:-9988px;" id="deleteMode" href="delete-dialog.php" data-rel="dialog">Delete Mode</a>
         </div>
 	    <div id="11" data-role="content">
             <form id="mobileCameraForm" action="/photobrawler/inc/upload_photo.php" method="post" enctype="multipart/form-data">
                 <div class="mobile-camera">
-                    <div style="position:absolute; left:-9999px"> 
+                    <div style="position:absolute; left:-9999px;"> 
                         <input id="fileSelect" type="file" name="photo" accept="image/*" capture="camera" />
                         <input id="photoName" type="text" name="photo-name" />
                     </div>
