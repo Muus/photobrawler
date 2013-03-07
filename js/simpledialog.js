@@ -10,8 +10,6 @@ $(document).delegate('#delMode', 'click', function() {
         $('<div>').simpledialog2({
             mode: 'button',
             zindex: '9999',
-            headerText: 'Delete mode',
-            headerClose: true,
             buttonPrompt: 'Delete mode is now ' + a,
             buttons : {
                 'OK': {

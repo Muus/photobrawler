@@ -168,11 +168,9 @@ onDestroy:function () {
     $('<div>').simpledialog2({
         mode: 'button',
         zindex: '9999',
-        headerText: 'Delete modeeasd',
-        headerClose: true,
-        buttonPrompt: 'Delete this shit?',
+        buttonPrompt: 'Really delete this photo?',
         buttons: {
-            'Alright': {
+            'Confirm': {
                 click: function () {
                     modelId = newThis.model.get('id');
                     link = newThis.model.get('link');
@@ -193,12 +191,15 @@ onDestroy:function () {
                             // Error handling as needed.
                         }
                     }); 
-                }
+                },
+                theme: 'b'
             },
             'Cancel': {
                 click: function () {
                     // Do nothing, cancel deletion       
-                }
+                },
+                icon: 'delete',
+                theme: 'c'
             },
         }
     }) 
