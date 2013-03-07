@@ -44,7 +44,6 @@ $('#delMode ,#pubMode').bind('click', function() {
             masterMode = 2;
             $(this).html('Delete mode is on');
             $('#pubMode').html('Public/Unpublic mode is off');
-            $('#deleteMode').trigger('click');
         }
     } else if ($(this).prop('id') == 'pubMode') {
         if(masterMode == 1){

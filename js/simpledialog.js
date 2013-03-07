@@ -1,26 +1,24 @@
-$(document).delegate('#opendialog', 'click', function() {
-    // NOTE: The selector can be whatever you like, so long as it is an HTML element.
-    // If you prefer, it can be a member of the current page, or an anonymous div
-    // like shown.
-    $('<div>').simpledialog2({
-        mode: 'button',
-        zindex: '9999',
-        headerText: 'Click One...',
-        headerClose: true,
-        buttonPrompt: 'Please Choose One',
-        buttons : {
-            'OK': {
-                click: function () { 
-                    $('#buttonoutput').text('OK');
-                }
-            },
-            'Cancel':   {
-                click: function () {
-                    $('#buttonoutput').text('Cancel');
+$(document).delegate('#delMode', 'click', function() {
+
+    if (masterMode == 2) {
+        dialogMsg('on');
+    } else if (masterMode == 0) {
+        dialogMsg('off'); 
+    }
+
+    function dialogMsg (a) {
+        $('<div>').simpledialog2({
+            mode: 'button',
+            zindex: '9999',
+            headerText: 'Delete mode',
+            headerClose: true,
+            buttonPrompt: 'Delete mode is now ' + a,
+            buttons : {
+                'OK': {
+                    click: function () {}
                 },
-                icon: "delete",
-                theme: "c"
             }
-        }
-    })
+        })
+    }
+
 })
