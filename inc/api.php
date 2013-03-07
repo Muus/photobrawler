@@ -34,12 +34,13 @@ function do_photo_stuff(){
   if($_SERVER['REQUEST_METHOD'] == "DELETE" ){
     $headers = apache_request_headers();
     foreach ($headers as $header => $value) {      
-      if($header === 'id'){
+      if($header == 'id'){
         $modelDeleteID = $value;
-      }else if($header === 'link'){
+      }else if($header == 'link'){
+		  
         $photo_link = '../'.$value;
 
-      }else if($header === 'thumblink'){
+      }else if($header == 'thumblink'){
         $thumb_link = '../'.$value;
 
       }

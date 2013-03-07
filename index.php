@@ -14,18 +14,8 @@ if (isset($_SESSION['email'])) {
 	
 }
 else{
-	//<a href="login/"><button>LOGIN</button></a>
-    echo '
-    
-<script>
-    var logged_in_user = false;
-</script>
-	';
-
+    echo '<script> var logged_in_user = false; </script>';
 }
-include('inc/dbClass.php');
-$db = new Db();
-$db->connector();
 ?>
 
 <!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]-->
@@ -40,6 +30,7 @@ $db->connector();
         <div class="topBanner" data-role="header">
         	<div style="float:left;"><a href="#nav"><button id="llls" data-icon="info" value="Info"></button></a></div>
                     PhotoBrawler
+
                     <!--<div style="float:right;"><a href=""><button id="llls" data-icon="gear" value="Tools"></button></a>
                     </div>-->
 
@@ -60,6 +51,7 @@ $db->connector();
                     <?php } else {} ?>
 
                     <a style="position:absolute; left:-9988px;" id="deleteMode" href="delete-dialog.php" data-rel="dialog">Delete Mode</a>
+
         </div>
 	    <div id="11" data-role="content">
             <form id="mobileCameraForm" action="/photobrawler/inc/upload_photo.php" method="post" enctype="multipart/form-data">
@@ -89,7 +81,6 @@ $db->connector();
 	<script src="js/libs/bootstrap.js"></script>
     <script src="js/back.js"></script>
     <script src="js/libs/jquery.mobile-1.3.0.min.js"></script>
-
     <script src="js/buttons.js"></script>
 
 </body>
