@@ -2,16 +2,7 @@
 <?php 
 session_start();
 if (isset($_SESSION['email'])) {
-	echo '
-<script>
-	var logged_in_user = '.$_SESSION["userid"].';
-	
-</script>
-    <a href="logout/"><button>LOGOUT</button></a>
-	';
-
-	echo 'user is logged in';
-	
+	echo '<script> var logged_in_user = '.$_SESSION["userid"].'; </script>';
 }
 else{
     echo '<script> var logged_in_user = false; </script>';
@@ -36,17 +27,18 @@ else{
                     </div>-->
 
                     <?php if (isset($_SESSION['email'])) { ?>
-                    <div id="lko" class="btn-group" style="float:right; margin-right:100px;">
+                    <div id="lko" class="btn-group" style="float:right;">
                     	<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
                     		Tools
                     		<span class="caret"></span>
                     	</a>
-                    	<ul class="dropdown-menu">
+                    	<ul class="dropdown-menu" style="right: 0; left: auto;">
                             <!-- dropdown menu links -->
                             <li id="mobileCamera"><a href="#">Capture photo</a></li>
                     		<li id="fees"><a id="delMode" href="#">Deletemode OFF</a></li>
                     		<li><a id="pubMode" href="#">Public/Unpublic OFF</a></li>
-
+                            <li class="divider"></li>
+							<li><a href="logout">Logout</a></li>
                     	</ul>
                     </div>
                     <?php } else {} ?>
