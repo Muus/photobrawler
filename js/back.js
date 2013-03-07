@@ -164,26 +164,45 @@ if(masterMode === 2){
 },
 
 onDestroy:function () {
-    modelId = this.model.get('id');
-    link = this.model.get('link');
-    thumblink = this.model.get('thumblink');
-    var el = this.$el;
-//Need these headers to complete the desired delete
-this.model.destroy({headers:{
-    'id' : modelId,
-    'link' : link,
-    'thumblink' : thumblink,
+    var newThis = this;
+    $('<div>').simpledialog2({
+        mode: 'button',
+        zindex: '9999',
+        headerText: 'Delete modeeasd',
+        headerClose: true,
+        buttonPrompt: 'Delete this shit?',
+        buttons: {
+            'Alright': {
+                click: function () {
+                    modelId = newThis.model.get('id');
+                    link = newThis.model.get('link');
+                    thumblink = newThis.model.get('thumblink');
+                    var el = newThis.$el;
+                    newThis.model.destroy({
+                        headers:{
+                            'id' : modelId,
+                            'link' : link,
+                            'thumblink' : thumblink,
+                        },
+                        success: function(removed_person, data) {
+                            $(el).hide();
+                        },
+                        error: function(aborted_person, response) {
+                            console.log(aborted_person);
+                            console.log(response);
+                            // Error handling as needed.
+                        }
+                    }); 
+                }
+            },
+            'Cancel': {
+                click: function () {
+                    // Do nothing, cancel deletion       
+                }
+            },
+        }
+    }) 
 },
-success: function(removed_person, data) {
-    $(el).hide();
-},
-error: function(aborted_person, response) {
-    console.log(aborted_person);
-    console.log(response);
-    // Error handling as needed.
-}});  
-},
-
 
 onChangePublic:function () {
     $.mobile.loading( 'show' );

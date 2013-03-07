@@ -70,9 +70,9 @@ else{
 	<script src="js/libs/underscore.js"></script>
 	<script src="js/libs/backbone.js"></script>
 	<script src="js/libs/bootstrap.js"></script>
-    <script src="js/back.js"></script>
     <script src="js/libs/jquery.mobile-1.3.0.min.js"></script>
     <script src="js/libs/jquery.mobile.simpledialog2.min.js"></script>
+    <script src="js/back.js"></script>
     <script src="js/simpledialog.js"></script>
     <script src="js/buttons.js"></script>
 
