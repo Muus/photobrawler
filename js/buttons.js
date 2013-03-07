@@ -6,10 +6,10 @@ $(function () {
         e.preventDefault();
         $('#fileSelect').trigger('click');
     });
-
+ 
     $('#fileSelect').change(function () {
-        var photoName = prompt('Name your photo');
-        $('#photoName').val(photoName);
+       // var photoName = prompt('Name your photo');
+        $('#photoName').val('kurre');
         $("#mobileCameraForm")[0].submit();
     });
 

@@ -98,6 +98,8 @@ events:{
 initialize:function () {
     this.template = _.template(this.templateHtml);
     this.render();
+	 
+
 
 
 },
@@ -139,11 +141,32 @@ if(masterMode === 2){
     path = 'singlephoto/index.php?phid='+this.model.get('link')+'&name='+this.model.get('name');
 
     //
+	
+	$.mobile.loadPage( ""+path+"" );
+			
+      setTimeout(function () {
+        $('#dude').imagesLoaded({
+    done: function ($images) {$.mobile.changePage( "#yesss", { transition: "slide"} );},
+    fail: function ($images, $proper, $broken) {},
+    always: function () {},
+    progress: function (isBroken, $images, $proper, $broken) {console.log('something up');}
+});
+    }, 100);    
+ 
+   
 
-
-    
     //your script, and potentially testing you are on a page requiring it
-    $.mobile.changePage( ""+path+"", { transition: "slide"} );
+    
+		
+			
+			
+			
+		
+		
+    //your script, and potentially testing you are on a page requiring it
+
+	 
+    //your script, and potentially testing you are on a page requiring it
 
     
 
