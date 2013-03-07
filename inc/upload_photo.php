@@ -29,7 +29,7 @@ if (file_exists("photos/" . $_FILES['photo']['name'])) {
 
 		$image = new SimpleImage();
 		$image->load("../uploads/photos/" . $x);
-		$image->resize(100, 100);
+		$image->resize(250, 250);
 		$image->save("../uploads/thumbnails/" . $x); 
 
         // make a call in db.
