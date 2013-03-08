@@ -74,8 +74,10 @@ else{
     <script src="js/libs/jquery.mobile.simpledialog2.min.js"></script>
     <script src="js/back.js"></script>
     <script src="js/simpledialog.js"></script>
-    <script src="js/buttons.js"></script>
+    
     <script src="js/imgload.js"></script>
+    <script src="js/jqform.js"></script>
+    <script src="js/buttons.js"></script>
 
 </body>
 </html>
