@@ -2,32 +2,7 @@
 
 //This is a "temporary" variable which controls the admins possibility to (change public status, delete photos)
 var masterMode = 0;
-//Bound button to click, should probably change back to click even with the 300ms delay, the click shoots if u start scrolling on top of a photo
-$('#lll').bind('click', function(){
-    //If masterMode is 0 it means safe mode,
-    //This iterates between all the possible values to choose the next if the button is clicked
-    //it also changes the text on the button
-    if(masterMode === 0 ){
-            //safeMode
 
-        masterMode = 1;//Set to "change public status"
-         //set text on button   
-         $('#lll').siblings('span').children('.ui-btn-text').html('UNPUBLIC MODE');
-
-    }else if(masterMode === 1){//mastermode was change public
-
-
-        masterMode = 2;//Set to "delete mode"
-        //set text on button 
-        $('#lll').siblings('span').children('.ui-btn-text').html('WARNING! DELETE MODE');
-        
-    }else if(masterMode === 2){//mastermode was "deletemode"
-        masterMode = 0;//Set to "safe mode"
-        //set text on button 
-        $('#lll').siblings('span').children('.ui-btn-text').html('SAFE MODE');
-
-    }
-});
 
 //new function with the dropdown
 $('#delMode ,#pubMode').bind('click', function() {
@@ -62,33 +37,35 @@ $('#delMode ,#pubMode').bind('click', function() {
 
 //
 PhotoModel = Backbone.Model.extend({
-    urlRoot:'inc/api.php?give_me=photos',
-    url: 'inc/api.php?give_me=photos',
+    urlRoot:'/photobrawler/inc/api.php?give_me=photos',
+    url: '/photobrawler/inc/api.php?give_me=photos',
     defaults: {},
 });
 
 PhotoCollection = Backbone.Collection.extend({ 
-    urlRoot:'inc/api.php?give_me=photos',
+    urlRoot:'/photobrawler/inc/api.php?give_me=photos',
     model:PhotoModel,
-    url: 'inc/api.php?give_me=photos',
+    url: '/photobrawler/inc/api.php?give_me=photos',
 });
 
 AccountsModel = Backbone.Model.extend({
-    urlRoot:'inc/api.php?give_me=accounts',
-    url: 'inc/api.php?give_me=accounts',
+    urlRoot:'/photobrawler/inc/api.php?give_me=accounts',
+    url: '/photobrawler/inc/api.php?give_me=accounts',
     defaults: {},
 });
 
 AccountsCollection = Backbone.Collection.extend({ 
-    urlRoot:'inc/api.php?give_me=accounts',
+    urlRoot:'/photobrawler/inc/api.php?give_me=accounts',
     model:AccountsModel,
-    url: 'inc/api.php?give_me=accounts',
+    url: '/photobrawler/inc/api.php?give_me=accounts',
 });
+
+
 //View for each photo in the grid on the first page, the galleryview loops out this view
 PhotoView = Backbone.View.extend({
     tagName:"div",
     className:'photoInGallery',
-    templateHtml:"<img class='inGallery' src='<%= thumblink %>'><div class='del'></div>",
+    templateHtml:"<img class='inGallery' src='<%= thumblink %>'>",
 //Probably should have click instead of click
 events:{
     "click":"onClick",
@@ -129,6 +106,7 @@ $.mobile.loading( 'hide' );
 },
 
 
+
 onClick:function (e) {
 //2 means delete mode
 if(masterMode === 2){
@@ -138,6 +116,7 @@ if(masterMode === 2){
 }else if(masterMode === 0){
     $.mobile.loading( 'show' );  
     //which photo to show in the single view 
+    var LastKnown = this.model;
     path = 'singlephoto/index.php?phid='+this.model.get('link')+'&name='+this.model.get('name');
 
     //
@@ -149,25 +128,28 @@ if(masterMode === 2){
     done: function ($images) {$.mobile.changePage( "#yesss", { transition: "slide"} );
 	//your script, and potentially testing you are on a page requiring it
     
-		
-			
-			
-			
-		
-		
-    //your script, and potentially testing you are on a page requiring it
 
-	 
-    //your script, and potentially testing you are on a page requiring it
 
-    
-
-//$.mobile.loadPage( ""+path+"" );
-    //Transition to the single photo view
-    //$.mobile.changePage( "#yesss", { transition: "slide"} );
     console.log('after changepage');
-    var photoDesc = this.model.get('description');
-    console.log(photoDesc);
+  
+
+    var lls = LastKnown;
+
+    $('.photoTitle').html(lls.get('name'));
+    
+    $('.photoDescription').html(lls.get('description'));
+
+    if(!logged_in_user){
+
+    }else{
+        $('.photoTitle, .photoDescription').prop('contenteditable','true').bind('blur', function(){
+        lls.set({'name':$('.photoTitle').html(), 'description': $('.photoDescription').html()});
+        lls.save();
+
+    });
+    }
+    
+    
     setTimeout(function () {
         console.log('lol');
     }, 2000);
@@ -290,7 +272,7 @@ tempIfNot = '<p> <%= email %></p>'
     +'<p> <%= province %></p>'
     +'<p> <%= state %></p>'
     +'<p> <%= country %></p>'
-    +'<p> <%= info %></p>'
+    +'<p> <%= info %></p>';
 //Accountmodel n collection
 if(!logged_in_user){
 
@@ -381,6 +363,17 @@ AccountsView = Backbone.View.extend({
         console.log('render');
     },
 });
+
+
+
+
+
+
+
+
+
+
+
 
 var lol = new GalleryView({ el: $("#photoGrid") });
 var lol = new AccountsView({ el: $("#infoPers") });
