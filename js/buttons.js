@@ -45,9 +45,4 @@ $(function () {
 	
 	/* attach a submit handler to the form */
 
-
-    $('#photoGrid > div').each(function () {
-        console.log(this);
-    });
-
 });
