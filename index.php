@@ -20,7 +20,7 @@ else{
 <body>
     <div id="yez" class="container" data-role="page">
         <div class="topBanner" data-role="header">
-        	<div style="float:left;"><a href="#nav"><button id="llls" data-icon="info" value="Info"></button></a></div>
+        	<div style="float:left;"><a href="#nav"><button data-role="button" id="llls" data-icon="info" value="Info"></button></a></div>
                     PhotoBrawler
 
                     <!--<div style="float:right;"><a href=""><button id="llls" data-icon="gear" value="Tools"></button></a>
