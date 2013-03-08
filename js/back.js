@@ -46,6 +46,9 @@ PhotoCollection = Backbone.Collection.extend({
     urlRoot:'/photobrawler/inc/api.php?give_me=photos',
     model:PhotoModel,
     url: '/photobrawler/inc/api.php?give_me=photos',
+    comparator:function (m) {
+        return -m.get('id');
+    },
 });
 
 AccountsModel = Backbone.Model.extend({
