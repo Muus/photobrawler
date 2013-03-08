@@ -66,4 +66,4 @@ if (file_exists("photos/" . $_FILES['photo']['name'])) {
     $mysqli->close();
 }
 
-//header('Location: /photobrawler/');
+header('Location: /photobrawler/');

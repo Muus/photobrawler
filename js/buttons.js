@@ -9,6 +9,9 @@ $(function () {
         $('#fileSelect').trigger('click');
     });
  
+
+
+
     $('#fileSelect').change(function () {
        // var photoName = prompt('Name your photo');
 	   
@@ -16,16 +19,16 @@ $(function () {
         //$("#mobileCameraForm")[0].submit(function(event) {
 		//return false;
   /* stop form from submitting normally */
-  alert('yo');
+  
   event.preventDefault();
-
+  $('#mobileCameraForm')[0].submit();
   /*clear result div*/
    //esult").html('');
 
-  /* get some values from elements on the page: */
+  /* get some values from elements on the page: 
    var values = $(this).serialize();
 	console.log(values);
-  /* Send the data using post and put the results in a div */
+  /* Send the data using post and put the results in a div 
     $.ajax({
       url: "/photobrawler/inc/upload_photo.php",
       type: "post",
@@ -39,7 +42,7 @@ $(function () {
           $("#result").html('there is error while submit');
       }   
     });
-	
+	*/
 	 
 });
     //});
