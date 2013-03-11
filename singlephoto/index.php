@@ -15,7 +15,7 @@ echo "<script>
 </head>
 <body>
 
-	<div id="yesss" data-role="page" class="container" data-add-back-btn="true">
+	<div id="singelphoto" data-role="page" class="container" data-add-back-btn="true">
 		<div data-role="header" class="topBanner">
 		</div><!-- /header -->
 		<div data-role="content">
