@@ -24,8 +24,8 @@ echo "<script>
 				<div class="photoSingel thumbnail">
 					<img id="dude" src="<?php echo '../'.$dat_link;?>" alt=" " />
 
-                    <h3 class="photoTitle"></h3>
-					<article class="photoDescription" id="photoDesc"></article>
+                    <p>Name:</p><h3 class="photoTitle" style="border-style:solid;"></h3>
+					<p>Description:</p><article class="photoDescription" id="photoDesc" style="border-style:solid;"></article>
 				</div>
 			</div>
 
