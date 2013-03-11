@@ -79,6 +79,7 @@ else{
     <script src="js/buttons.js"></script>
 
 <?php 
+if(isset($_GET['photoUpload'])){
 if($_GET['photoUpload'] == "completed"){
         echo "<script> 
         console.log('yp');
@@ -96,7 +97,7 @@ if($_GET['photoUpload'] == "completed"){
 
 });
 </script>";
-    }
+    }}
 
 ?>
 
