@@ -4,10 +4,16 @@
 //include_once ('../inc/head2.php');
 	$dat_link = $_GET['phid'];
     $photo_name = $_GET['name'];
-	 //<?php echo $photo_name; ?>
+	 
+    
+
+
 	?>
 	<?php 
 echo "<script> 
+
+
+
 
 </script>"
 

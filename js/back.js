@@ -68,7 +68,7 @@ AccountsCollection = Backbone.Collection.extend({
 PhotoView = Backbone.View.extend({
     tagName:"div",
     className:'photoInGallery',
-    templateHtml:"<img class='inGallery' src='<%= thumblink %>'>",
+    templateHtml:"<img id=<%= id %> class='inGallery' src='<%= thumblink %>'>",
 //Probably should have click instead of click
 events:{
     "click":"onClick",
@@ -236,7 +236,7 @@ this.render();
 //This view is used to put out all the singlephotos after fetch
 GalleryView = Backbone.View.extend({
     tagName:'div',
-    className:'',
+    
     templateHtml:"<div></div>",
     initialize:function () {
         this.template = _.template(this.templateHtml);

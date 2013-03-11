@@ -7,6 +7,8 @@ if (isset($_SESSION['email'])) {
 else{
     echo '<script> var logged_in_user = false; </script>';
 }
+
+
 ?>
 
 <!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]-->
@@ -75,6 +77,28 @@ else{
     <script src="js/imgload.js"></script>
     <script src="js/jqform.js"></script>
     <script src="js/buttons.js"></script>
+
+<?php 
+if($_GET['photoUpload'] == "completed"){
+        echo "<script> 
+        console.log('yp');
+        $(function () { 
+            varcharra = '".$_GET['photo']."';
+            $.mobile.loading( 'show' );
+                
+                    console.log(varcharra);
+                   
+                   setTimeout(function(){
+                    $('[thumb_id=".$_GET['photo']."]').trigger('click');
+                },100);
+
+
+
+});
+</script>";
+    }
+
+?>
 
 </body>
 </html>
