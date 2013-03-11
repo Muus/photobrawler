@@ -1,8 +1,5 @@
-
-
 //This is a "temporary" variable which controls the admins possibility to (change public status, delete photos)
 var masterMode = 0;
-
 
 //new function with the dropdown
 $('#delMode ,#pubMode').bind('click', function() {
@@ -33,8 +30,6 @@ $('#delMode ,#pubMode').bind('click', function() {
     }
 });
 
-
-
 //
 PhotoModel = Backbone.Model.extend({
     urlRoot:'/photobrawler/inc/api.php?give_me=photos',
@@ -63,7 +58,6 @@ AccountsCollection = Backbone.Collection.extend({
     url: '/photobrawler/inc/api.php?give_me=accounts',
 });
 
-
 //View for each photo in the grid on the first page, the galleryview loops out this view
 PhotoView = Backbone.View.extend({
     tagName:"div",
@@ -78,10 +72,6 @@ events:{
 initialize:function () {
     this.template = _.template(this.templateHtml);
     this.render();
-	 
-
-
-
 },
 
 render:function () {
@@ -108,71 +98,58 @@ if (this.model.get('public') === 0 && !logged_in_user) {
 $.mobile.loading( 'hide' );
 },
 
-
-
 onClick:function (e) {
-//2 means delete mode
-if(masterMode === 2){
-    console.log('destroy');
-    this.onDestroy();
-    //0 means safemode and should only transition to the single photoview
-}else if(masterMode === 0){
-    $.mobile.loading( 'show' );  
-    //which photo to show in the single view 
-    var LastKnown = this.model;
-    path = 'singlephoto/index.php?phid='+this.model.get('link')+'&name='+this.model.get('name');
+    //2 means delete mode
+    if(masterMode === 2){
+        console.log('destroy');
+        this.onDestroy();
+        //0 means safemode and should only transition to the single photoview
+    }else if(masterMode === 0){
+        $.mobile.loading( 'show' );
+        //which photo to show in the single view
+        var LastKnown = this.model;
+        path = 'singlephoto/index.php?phid='+this.model.get('link')+'&name='+this.model.get('name');
 
-    //
-	
-	$.mobile.loadPage( ""+path+"" );
-			
-      setTimeout(function () {
-        $('#dude').imagesLoaded({
-    done: function ($images) {$.mobile.changePage( "#yesss", { transition: "slide"} );
-	//your script, and potentially testing you are on a page requiring it
-    
+        //
+        $.mobile.loadPage( ""+path+"" );
 
+        setTimeout(function () {
+             $('#dude').imagesLoaded({
+                    done: function ($images) {$.mobile.changePage( "#singelphoto", { transition: "slide"} );
+                    //your script, and potentially testing you are on a page requiring it
 
-    console.log('after changepage');
-  
+                    console.log('after changepage');
 
-    var lls = LastKnown;
+                    var lls = LastKnown;
 
-    $('.photoTitle').html(lls.get('name'));
-    
-    $('.photoDescription').html(lls.get('description'));
+                    $('.photoTitle').html(lls.get('name'));
+                    $('.photoDescription').html(lls.get('description'));
 
-    if(!logged_in_user){
+                    if(!logged_in_user){
 
-    }else{
-        $('.photoTitle, .photoDescription').prop('contenteditable','true').bind('blur', function(){
-        lls.set({'name':$('.photoTitle').html(), 'description': $('.photoDescription').html()});
-        lls.save();
+                    }else{
+                        $('.photoTitle, .photoDescription').prop('contenteditable','true').bind('blur', function(){
+                            lls.set({'name':$('.photoTitle').html(), 'description': $('.photoDescription').html()});
+                            lls.save();
+                        });
+                    }
 
-    });
+                    setTimeout(function () {
+                        console.log('lol');
+                    }, 2000);
+
+                    },
+                fail: function ($images, $proper, $broken) {},
+                always: function () {},
+                progress: function (isBroken, $images, $proper, $broken) {console.log('something up');}
+            });
+
+        }, 200);
+
+        //1 means change public status
+    }else if(masterMode === 1){
+        this.onChangePublic();
     }
-    
-    
-    setTimeout(function () {
-        console.log('lol');
-    }, 2000);
-	
-	},
-    fail: function ($images, $proper, $broken) {},
-    always: function () {},
-    progress: function (isBroken, $images, $proper, $broken) {console.log('something up');}
-});
-
-   
-
-    
-    }, 200);    
- 
-
-    //1 means change public status
-}else if(masterMode === 1){
-    this.onChangePublic();
-}
 },
 
 onDestroy:function () {
@@ -366,16 +343,6 @@ AccountsView = Backbone.View.extend({
         console.log('render');
     },
 });
-
-
-
-
-
-
-
-
-
-
 
 
 var lol = new GalleryView({ el: $("#photoGrid") });

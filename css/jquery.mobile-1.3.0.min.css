@@ -204,13 +204,6 @@
     border: 1px solid #aaa;
     color: #333;
     text-shadow: 0 1px 0 #fff;
-    background: #f9f9f9;
-    background-image: -webkit-gradient(linear, left top, left bottom, from( #f9f9f9 ), to( #eee ));
-    background-image: -webkit-linear-gradient( #f9f9f9, #eee );
-    background-image: -moz-linear-gradient( #f9f9f9, #eee );
-    background-image: -ms-linear-gradient( #f9f9f9, #eee );
-    background-image: -o-linear-gradient( #f9f9f9, #eee );
-    background-image: linear-gradient( #f9f9f9, #eee );
 }
 .ui-overlay-c {
     background-image: none;
