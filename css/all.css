@@ -568,5 +568,8 @@ ul.icons {
   float: right;
   margin: 5px; }
 
+.photoGrid {
+  margin-top: 40px; }
+
 .photoGrid img {
   margin: 2px; }

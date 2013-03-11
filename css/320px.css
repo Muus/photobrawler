@@ -1,8 +1,4 @@
 @media only screen and (min-width: 320px) {
-  .photoGrid {
-    margin-right: -15px;
-    margin-top: 50px; }
-
   .photoGrid img {
     -moz-box-shadow: 0px 0px 2px black;
     -webkit-box-shadow: 0px 0px 2px black;
@@ -12,11 +8,8 @@
     margin: 3px; }
 
   .photoFrame {
-    margin: 60px 5px 5px 5px;
-    max-width: 400px; }
-
-  .photoSingel img {
-    max-height: 400px; }
+    margin: 30px auto;
+    width: 300px; }
 
   .loginCont {
     margin: 80px 5px 5px 5px; } }
