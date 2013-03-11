@@ -20,25 +20,22 @@ else{
 <body>
     <div id="yez" class="container" data-role="page">
         <div class="topBanner" data-role="header">
-        	<div style="float:left;"><a href="#nav"><button data-role="button" id="llls" data-icon="info" value="Info"></button></a></div>
-                    PhotoBrawler
+        	<div style="float:left;"><a href="#nav"><button><i class="icon-user"></i></button></a></div>
 
-                    <!--<div style="float:right;"><a href=""><button id="llls" data-icon="gear" value="Tools"></button></a>
-                    </div>-->
 
                     <?php if (isset($_SESSION['email'])) { ?>
                     <div id="lko" class="btn-group" style="float:right;">
                     	<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
-                    		Tools
+                    		<i class="icon-wrench icon-white"></i>Tools
                     		<span class="caret"></span>
                     	</a>
                     	<ul class="dropdown-menu" style="right: 0; left: auto;">
                             <!-- dropdown menu links -->
-                            <li id="mobileCamera"><a href="#">Capture photo</a></li>
-                    		<li id="fees"><a id="delMode" href="#">Deletemode OFF</a></li>
-                    		<li><a id="pubMode" href="#">Public/Unpublic OFF</a></li>
+                            <li id="mobileCamera"><a href="#"><i class="icon-camera"></i>Capture photo</a></li>
+                    		<li id="fees"><a id="delMode" href="#"><i class="icon-trash"></i>Deletemode OFF</a></li>
+                    		<li><a id="pubMode" href="#"><i class="icon-eye-open"></i>Public/Unpublic OFF</a></li>
                             <li class="divider"></li>
-							<li><a href="logout">Logout</a></li>
+							<li><a href="logout"><i class="icon-share"></i>Logout</a></li>
                     	</ul>
                     </div>
                     <?php } else {} ?>
