@@ -34,7 +34,7 @@
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7abcff', endColorstr='#4096ee',GradientType=0 ); /* IE6-9 */
     border-bottom: 1px solid #1a1a1a;
     width:100%;
-    height:auto;
+    min-height:30px;
     position:fixed;
     z-index:9999;
     left:0;
@@ -50,4 +50,7 @@
 .toolBtn {
     float:right;
     margin:5px;
+}
+.photoGrid img {
+    margin:2px;
 }

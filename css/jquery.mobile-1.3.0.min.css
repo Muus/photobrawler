@@ -1,17 +1,4 @@
 /*! jQuery Mobile vGit Build: SHA1: 3d48d6517f808550ee402a2859feedec13b0a3fe <> Date: Tue Feb 19 15:25:22 2013 -0800 jquerymobile.com | jquery.org/license !*/
-.ui-bar-a {
-    border: 1px solid #333;
-    background: #111;
-    color: #fff;
-    font-weight: bold;
-    text-shadow: 0 -1px 0 #000;
-    background-image: -webkit-gradient(linear, left top, left bottom, from( #3c3c3c ), to( #111 ));
-    background-image: -webkit-linear-gradient( #3c3c3c, #111 );
-    background-image: -moz-linear-gradient( #3c3c3c, #111 );
-    background-image: -ms-linear-gradient( #3c3c3c, #111 );
-    background-image: -o-linear-gradient( #3c3c3c, #111 );
-    background-image: linear-gradient( #3c3c3c, #111 );
-}
 .ui-bar-a, .ui-bar-a input, .ui-bar-a select, .ui-bar-a textarea, .ui-bar-a button {
     font-family: Helvetica, Arial, sans-serif;
 }

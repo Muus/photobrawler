@@ -1,0 +1,8 @@
+@media only screen and (min-width: 992px) {
+  .photoGrid img {
+    -moz-box-shadow: 0px 0px 2px black;
+    -webkit-box-shadow: 0px 0px 2px black;
+    box-shadow: 0px 0px 2px black;
+    float: left;
+    width: 19%;
+    margin: 2px; } }

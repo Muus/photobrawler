@@ -20,7 +20,7 @@ else{
 <body>
     <div id="yez" class="container" data-role="page">
         <div class="topBanner" data-role="header">
-        	<div class="userBtn"><a href="#nav"><button><i class="icon-user"></i></button></a></div>
+        	<div class="userBtn"><a href="#nav"><button class="btn"><i class="icon-align-justify"></i></button></a></div>
 
 
                     <?php if (isset($_SESSION['email'])) { ?>
