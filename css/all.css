@@ -573,3 +573,17 @@ ul.icons {
 
 .photoGrid img {
   margin: 2px; }
+
+article {
+  border: 1px solid #999999;
+  min-height: 10px; }
+
+.photoTitle {
+  border: 1px solid #999999;
+  min-height: 10px; }
+
+.logo {
+  width: 200px;
+  margin: 5px auto;
+  color: #fff;
+  text-shadow: -1px -1px 1px black, 1px 1px 1px #cccccc; }
