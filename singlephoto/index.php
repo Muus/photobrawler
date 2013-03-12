@@ -21,8 +21,9 @@ echo "<script>
 </head>
 <body>
 
-	<div id="singelphoto" data-role="page" class="container" data-add-back-btn="true">
+	<div id="singelphoto" data-role="page" class="container" >
 		<div data-role="header" class="topBanner">
+			<a href="#" data-rel="back" data-role="button" data-icon="back" style="margin-top:10px;">Back</a>
 		</div><!-- /header -->
 		<div data-role="content">
 
