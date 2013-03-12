@@ -234,15 +234,15 @@ GalleryView = Backbone.View.extend({
 }});
     },
 });
-tempIfLoggedIn = '<input name="email" type="email" value="<%= email %>">'
-    +'<input name="phonenumber" value="<%= phonenumber %>">'
-    +'<input name="street_address" value="<%= street_address %>">'
-    +'<input name="postal_code" type="" value="<%= postal_code %>">'
-    +'<input name="city" type="" value="<%= city %>">'
-    +'<input name="province" type="" value="<%= province %>">'
-    +'<input name="state" type="" value="<%= state %>">'
-    +'<input name="country" type="" value="<%= country %>">'
-    +'<input name="info" type="" value="<%= info %>">';
+tempIfLoggedIn = '<p>Name: <input name="email" type="email" value="<%= email %>"></p>'
+    +'<p>Phonenumber: <input name="phonenumber" value="<%= phonenumber %>"></p>'
+    +'<p>Street address: <input name="street_address" value="<%= street_address %>"></p>'
+    +'<p>Postal Code: <input name="postal_code" type="" value="<%= postal_code %>"></p>'
+    +'<p>City: <input name="city" type="" value="<%= city %>"></p>'
+    +'<p>Province: <input name="province" type="" value="<%= province %>"></p>'
+    +'<p>State: <input name="state" type="" value="<%= state %>"></p>'
+    +'<p>Country: <input name="country" type="" value="<%= country %>"></p>'
+    +'<p>Info: <input name="info" type="" value="<%= info %>"></p>';
 
 tempIfNot = '<p> <%= email %></p>'
     +'<p> <%= phonenumber %></p>'
