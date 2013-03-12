@@ -4,10 +4,16 @@
 //include_once ('../inc/head2.php');
 	$dat_link = $_GET['phid'];
     $photo_name = $_GET['name'];
-	 //<?php echo $photo_name; ?>
+	 
+    
+
+
 	?>
 	<?php 
 echo "<script> 
+
+
+
 
 </script>"
 
@@ -15,8 +21,9 @@ echo "<script>
 </head>
 <body>
 
-	<div id="singelphoto" data-role="page" class="container" data-add-back-btn="true">
+	<div id="singelphoto" data-role="page" class="container" >
 		<div data-role="header" class="topBanner">
+			<div class="userBtn"><a href="#" data-rel="back"><button class="btn"><i class="icon-circle-arrow-left"></i></button></a></div>
 		</div><!-- /header -->
 		<div data-role="content">
 

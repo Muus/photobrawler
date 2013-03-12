@@ -10,22 +10,22 @@ $('#delMode ,#pubMode').bind('click', function() {
     if($(this).prop('id') == 'delMode') {
         if(masterMode == 2){
             masterMode = 0;
-            $(this).html('Delete mode is off');
+            $(this).html('<i class="icon-trash"></i> Delete mode is off');
         } else if (masterMode == 0 || masterMode == 1) {
             console.log('2');
             masterMode = 2;
-            $(this).html('Delete mode is on');
-            $('#pubMode').html('Public/Unpublic mode is off');
+            $(this).html('<i class="icon-trash"></i> Delete mode is on');
+            $('#pubMode').html('<i class="icon-eye-open"></i> Public/Unpublic mode is off');
         }
     } else if ($(this).prop('id') == 'pubMode') {
         if(masterMode == 1){
             masterMode = 0;
-            $(this).html('Public/Unpublic mode is off');
+            $(this).html('<i class="icon-eye-open"></i> Public/Unpublic mode is off');
         } else if (masterMode == 0 || masterMode == 2) {
             console.log('1');
             masterMode = 1;
-            $(this).html('Public/Unpublic mode is on');
-            $('#delMode').html('Delete mode is off');
+            $(this).html('<i class="icon-eye-open"></i> Public/Unpublic mode is on');
+            $('#delMode').html('<i class="icon-trash"></i> Delete mode is off');
         }   
     }
 });
@@ -62,7 +62,7 @@ AccountsCollection = Backbone.Collection.extend({
 PhotoView = Backbone.View.extend({
     tagName:"div",
     className:'photoInGallery',
-    templateHtml:"<img class='inGallery' src='<%= thumblink %>'>",
+    templateHtml:"<img id=<%= id %> class='inGallery' src='<%= thumblink %>'>",
 //Probably should have click instead of click
 events:{
     "click":"onClick",
@@ -213,7 +213,7 @@ this.render();
 //This view is used to put out all the singlephotos after fetch
 GalleryView = Backbone.View.extend({
     tagName:'div',
-    className:'',
+    
     templateHtml:"<div></div>",
     initialize:function () {
         this.template = _.template(this.templateHtml);
@@ -234,25 +234,25 @@ GalleryView = Backbone.View.extend({
 }});
     },
 });
-tempIfLoggedIn = '<input name="email" type="email" value="<%= email %>">'
-    +'<input name="phonenumber" value="<%= phonenumber %>">'
-    +'<input name="street_address" value="<%= street_address %>">'
-    +'<input name="postal_code" type="" value="<%= postal_code %>">'
-    +'<input name="city" type="" value="<%= city %>">'
-    +'<input name="province" type="" value="<%= province %>">'
-    +'<input name="state" type="" value="<%= state %>">'
-    +'<input name="country" type="" value="<%= country %>">'
-    +'<input name="info" type="" value="<%= info %>">';
+tempIfLoggedIn = '<p>Name: <input name="email" type="email" value="<%= email %>"></p>'
+    +'<p>Phonenumber: <input name="phonenumber" value="<%= phonenumber %>"></p>'
+    +'<p>Street address: <input name="street_address" value="<%= street_address %>"></p>'
+    +'<p>Postal Code: <input name="postal_code" type="" value="<%= postal_code %>"></p>'
+    +'<p>City: <input name="city" type="" value="<%= city %>"></p>'
+    +'<p>Province: <input name="province" type="" value="<%= province %>"></p>'
+    +'<p>State: <input name="state" type="" value="<%= state %>"></p>'
+    +'<p>Country: <input name="country" type="" value="<%= country %>"></p>'
+    +'<p>Info: <input name="info" type="" value="<%= info %>"></p>';
 
-tempIfNot = '<p> <%= email %></p>'
-    +'<p> <%= phonenumber %></p>'
-    +'<p> <%= street_address %></p>'
-    +'<p> <%= postal_code %></p>'
-    +'<p> <%= city %></p>'
-    +'<p> <%= province %></p>'
-    +'<p> <%= state %></p>'
-    +'<p> <%= country %></p>'
-    +'<p> <%= info %></p>';
+tempIfNot = '<p>Name: <%= email %></p>'
+    +'<p>Phonenumber: <%= phonenumber %></p>'
+    +'<p>Street address: <%= street_address %></p>'
+    +'<p>Postal Code: <%= postal_code %></p>'
+    +'<p>City: <%= city %></p>'
+    +'<p>Province: <%= province %></p>'
+    +'<p>State: <%= state %></p>'
+    +'<p>Country: <%= country %></p>'
+    +'<p>Info: <%= info %></p>';
 //Accountmodel n collection
 if(!logged_in_user){
 

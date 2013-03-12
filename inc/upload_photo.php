@@ -63,7 +63,27 @@ if (file_exists("photos/" . $_FILES['photo']['name'])) {
             echo 'Value: 8; A PHP extension stopped the file upload. PHP does not provide a way to ascertain which extension caused the file upload to stop; examining the list of loaded extensions with phpinfo() may help. Introduced in PHP 5.2.0.';
         }    
     }
+
+
+
+   
+                
+                
     $mysqli->close();
 }
+$mysqlitt = new mysqli("localhost", "root", "", "photobrawler");
+ $stmtt = $mysqlitt->prepare("SELECT photos.id FROM photos WHERE photos.link = ?");
+        $stmtt->bind_param("s", $z); 
 
-header('Location: /photobrawler/');
+
+$stmtt->execute();
+    /* bind result variables */
+    $stmtt->bind_result($district);
+        while ($row = $stmtt->fetch()) {
+
+                $picId = $district;
+                
+
+                
+            }
+header('Location: /photobrawler/?photoUpload=completed&photo='.$picId);
