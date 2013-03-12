@@ -18,5 +18,4 @@ $(document).delegate('#delMode', 'click', function() {
             }
         })
     }
-
 })

@@ -30,10 +30,7 @@ echo "<script>
 			</div>
 
 		</div><!-- /content -->
-		<div data-role="footer" style="display:none;">
-			<h4>Page Footer</h4>
-		</div><!-- /header -->
 	</div>
 
-	<body>
-		</html>
+<body>
+</html>
