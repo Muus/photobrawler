@@ -23,7 +23,7 @@ echo "<script>
 
 	<div id="singelphoto" data-role="page" class="container" >
 		<div data-role="header" class="topBanner">
-			<a href="#" data-rel="back" data-role="button" data-icon="back" style="margin-top:10px;">Back</a>
+			<div class="userBtn"><a href="#" data-rel="back"><button class="btn"><i class="icon-circle-arrow-left"></i></button></a></div>
 		</div><!-- /header -->
 		<div data-role="content">
 
