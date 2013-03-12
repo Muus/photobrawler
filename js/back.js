@@ -6,13 +6,13 @@ $('#delMode ,#pubMode').bind('click', function() {
     //If masterMode is 0 it means safe mode,
     //This iterates between all the possible values to choose the next if the button is clicked
     //it also changes the text on the button
-    console.log($(this).prop('id'));
+    
     if($(this).prop('id') == 'delMode') {
         if(masterMode == 2){
             masterMode = 0;
             $(this).html('<i class="icon-trash"></i> Delete mode is off');
         } else if (masterMode == 0 || masterMode == 1) {
-            console.log('2');
+            
             masterMode = 2;
             $(this).html('<i class="icon-trash"></i> Delete mode is on');
             $('#pubMode').html('<i class="icon-eye-open"></i> Public/Unpublic mode is off');
@@ -22,13 +22,16 @@ $('#delMode ,#pubMode').bind('click', function() {
             masterMode = 0;
             $(this).html('<i class="icon-eye-open"></i> Public/Unpublic mode is off');
         } else if (masterMode == 0 || masterMode == 2) {
-            console.log('1');
+            
             masterMode = 1;
             $(this).html('<i class="icon-eye-open"></i> Public/Unpublic mode is on');
             $('#delMode').html('<i class="icon-trash"></i> Delete mode is off');
         }   
     }
 });
+
+
+
 
 //
 PhotoModel = Backbone.Model.extend({
@@ -57,6 +60,9 @@ AccountsCollection = Backbone.Collection.extend({
     model:AccountsModel,
     url: '/photobrawler/inc/api.php?give_me=accounts',
 });
+
+
+
 
 //View for each photo in the grid on the first page, the galleryview loops out this view
 PhotoView = Backbone.View.extend({
@@ -101,7 +107,7 @@ $.mobile.loading( 'hide' );
 onClick:function (e) {
     //2 means delete mode
     if(masterMode === 2){
-        console.log('destroy');
+        
         this.onDestroy();
         //0 means safemode and should only transition to the single photoview
     }else if(masterMode === 0){
@@ -118,12 +124,24 @@ onClick:function (e) {
                     done: function ($images) {$.mobile.changePage( "#singelphoto", { transition: "slide"} );
                     //your script, and potentially testing you are on a page requiring it
 
-                    console.log('after changepage');
-
+                   
+                    var photit;
+                    var phodesc;
                     var lls = LastKnown;
+                    console.log(lls.get('name'));
+                    if(lls.get('name') == null || lls.get('name') == ""){
+                        photit = "Image title";
+                    }else{
+                        photit = lls.get('name');
+                    }
 
-                    $('.photoTitle').html(lls.get('name'));
-                    $('.photoDescription').html(lls.get('description'));
+                    if(lls.get('description') == null || lls.get('description') == ""){
+                        phodesc = "description";
+                    }else{
+                        phodesc = lls.get('description');
+                    }
+                    $('.photoTitle').html(photit);
+                    $('.photoDescription').html(phodesc);
 
                     if(!logged_in_user){
 
@@ -134,14 +152,12 @@ onClick:function (e) {
                         });
                     }
 
-                    setTimeout(function () {
-                        console.log('lol');
-                    }, 2000);
+                    
 
                     },
                 fail: function ($images, $proper, $broken) {},
                 always: function () {},
-                progress: function (isBroken, $images, $proper, $broken) {console.log('something up');}
+                progress: function (isBroken, $images, $proper, $broken) {}
             });
 
         }, 200);
@@ -210,6 +226,10 @@ this.render();
 
 
 });
+
+
+
+
 //This view is used to put out all the singlephotos after fetch
 GalleryView = Backbone.View.extend({
     tagName:'div',
@@ -260,6 +280,9 @@ if(!logged_in_user){
 }else{
     useForTemp =tempIfLoggedIn;
 }
+
+
+
 SingleAccountsView = Backbone.View.extend({
     tagName:"form",
     className:'',
@@ -283,9 +306,9 @@ this.$el.html(this.template(this.model.toJSON()));
 },
 
 onBlur:function () {
-    console.log('blurred');
+    
     disName = $(this);
-    console.log(disName);
+    
     this.model.set('phonenumber', $('[name=phonenumber]').val() );
     this.model.set('street_address', $('[name=street_address]').val() );
     this.model.set('postal_code', $('[name=postal_code]').val() );
@@ -298,9 +321,9 @@ onBlur:function () {
 },
 
 onFocus:function () {
-    console.log('focused');
+    
     disName = $(this).text();
-    console.log(disName);
+    
 },
 
 onChangePublic:function () {
@@ -310,9 +333,11 @@ onChangePublic:function () {
     this.model.set('public', 0);
     this.model.save();
     this.render();
-//console.log(ourElem);
+
 },
 });
+
+
 
 AccountsView = Backbone.View.extend({
     tagName:'div',
@@ -323,8 +348,7 @@ AccountsView = Backbone.View.extend({
 
         this.template = _.template(this.templateHtml);
         this.render();
-        console.log('fee');
-        console.log(this.accountsCollection);
+        
     },
 
     render:function () {
@@ -333,14 +357,14 @@ AccountsView = Backbone.View.extend({
         this.accountsCollection = new AccountsCollection();
         this.accountsCollection.fetch({data:{'limit':0}, success:function () {
             _.each(_this.accountsCollection.models, function (elem) {
-                console.log(elem.get('email'));
+               
                 var view = new SingleAccountsView({model:elem});
         //Change later to other div
         jQuery("#infoPers").append(view.$el);
     });
 
         }});
-        console.log('render');
+       
     },
 });
 
