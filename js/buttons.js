@@ -41,4 +41,9 @@ $(function () {
 	
 	/* attach a submit handler to the form */
 
+    $('#logOut').click(function (e) {
+        e.preventDefault();
+        window.location.href = "/photobrawler/logout";
+    });
+
 });

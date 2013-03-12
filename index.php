@@ -38,7 +38,7 @@ else{
 					<li id="fees"><a id="delMode" href="#"><i class="icon-trash"></i> Deletemode OFF</a></li>
 					<li><a id="pubMode" href="#"><i class="icon-eye-open"></i> Public/Unpublic OFF</a></li>
 					<li class="divider"></li>
-					<li><a href="logout"><i class="icon-share"></i> Logout</a></li>
+					<li><a id="logOut" href="#"><i class="icon-share"></i> Logout</a></li>
 				</ul>
 			</div>
 			<?php } else {} ?>

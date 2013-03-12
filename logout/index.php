@@ -6,10 +6,11 @@ session_destroy();
 <script type="text/javascript">
 function countdown() {
     var i = document.getElementById('counter');
-    if (parseInt(i.innerHTML)<=0) {
+    if (parseInt(i.innerHTML)==0) {
         location.href = '../';
+    } else {
+        i.innerHTML = parseInt(i.innerHTML)-1;
     }
-    i.innerHTML = parseInt(i.innerHTML)-1;
 }
 setInterval(function(){ countdown(); },800);
 </script>
