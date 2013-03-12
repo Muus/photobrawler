@@ -244,15 +244,15 @@ tempIfLoggedIn = '<p>Name: <input name="email" type="email" value="<%= email %>"
     +'<p>Country: <input name="country" type="" value="<%= country %>"></p>'
     +'<p>Info: <input name="info" type="" value="<%= info %>"></p>';
 
-tempIfNot = '<p> <%= email %></p>'
-    +'<p> <%= phonenumber %></p>'
-    +'<p> <%= street_address %></p>'
-    +'<p> <%= postal_code %></p>'
-    +'<p> <%= city %></p>'
-    +'<p> <%= province %></p>'
-    +'<p> <%= state %></p>'
-    +'<p> <%= country %></p>'
-    +'<p> <%= info %></p>';
+tempIfNot = '<p>Name: <%= email %></p>'
+    +'<p>Phonenumber: <%= phonenumber %></p>'
+    +'<p>Street address: <%= street_address %></p>'
+    +'<p>Postal Code: <%= postal_code %></p>'
+    +'<p>City: <%= city %></p>'
+    +'<p>Province: <%= province %></p>'
+    +'<p>State: <%= state %></p>'
+    +'<p>Country: <%= country %></p>'
+    +'<p>Info: <%= info %></p>';
 //Accountmodel n collection
 if(!logged_in_user){
 
