@@ -31,7 +31,7 @@ echo "<script>
 				<div class="photoSingel thumbnail">
 					<img id="dude" src="<?php echo '../'.$dat_link;?>" alt=" " />
 
-                    <p>Name:</p><h3 class="photoTitle" style="border-style:solid;"></h3>
+                    <p>Name:</p><h3 id="photTitle" class="photoTitle" style="border-style:solid;"></h3>
 					<p>Description:</p><article class="photoDescription" id="photoDesc" style="border-style:solid;"></article>
 				</div>
 			</div>
@@ -41,6 +41,8 @@ echo "<script>
 			<h4>Page Footer</h4>
 		</div><!-- /header -->
 	</div>
-
+	<script>
+	
+	</script>
 	<body>
 		</html>

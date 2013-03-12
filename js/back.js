@@ -30,6 +30,9 @@ $('#delMode ,#pubMode').bind('click', function() {
     }
 });
 
+
+
+
 //
 PhotoModel = Backbone.Model.extend({
     urlRoot:'/photobrawler/inc/api.php?give_me=photos',
@@ -57,6 +60,9 @@ AccountsCollection = Backbone.Collection.extend({
     model:AccountsModel,
     url: '/photobrawler/inc/api.php?give_me=accounts',
 });
+
+
+
 
 //View for each photo in the grid on the first page, the galleryview loops out this view
 PhotoView = Backbone.View.extend({
@@ -119,11 +125,23 @@ onClick:function (e) {
                     //your script, and potentially testing you are on a page requiring it
 
                    
-
+                    var photit;
+                    var phodesc;
                     var lls = LastKnown;
+                    console.log(lls.get('name'));
+                    if(lls.get('name') == null || lls.get('name') == ""){
+                        photit = "Image title";
+                    }else{
+                        photit = lls.get('name');
+                    }
 
-                    $('.photoTitle').html(lls.get('name'));
-                    $('.photoDescription').html(lls.get('description'));
+                    if(lls.get('description') == null || lls.get('description') == ""){
+                        phodesc = "description";
+                    }else{
+                        phodesc = lls.get('description');
+                    }
+                    $('.photoTitle').html(photit);
+                    $('.photoDescription').html(phodesc);
 
                     if(!logged_in_user){
 
@@ -208,6 +226,10 @@ this.render();
 
 
 });
+
+
+
+
 //This view is used to put out all the singlephotos after fetch
 GalleryView = Backbone.View.extend({
     tagName:'div',
@@ -258,6 +280,9 @@ if(!logged_in_user){
 }else{
     useForTemp =tempIfLoggedIn;
 }
+
+
+
 SingleAccountsView = Backbone.View.extend({
     tagName:"form",
     className:'',
@@ -311,6 +336,8 @@ onChangePublic:function () {
 
 },
 });
+
+
 
 AccountsView = Backbone.View.extend({
     tagName:'div',
