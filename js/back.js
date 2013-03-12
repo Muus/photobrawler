@@ -10,22 +10,22 @@ $('#delMode ,#pubMode').bind('click', function() {
     if($(this).prop('id') == 'delMode') {
         if(masterMode == 2){
             masterMode = 0;
-            $(this).html('Delete mode is off');
+            $(this).html('<i class="icon-trash"></i> Delete mode is off');
         } else if (masterMode == 0 || masterMode == 1) {
             console.log('2');
             masterMode = 2;
-            $(this).html('Delete mode is on');
-            $('#pubMode').html('Public/Unpublic mode is off');
+            $(this).html('<i class="icon-trash"></i> Delete mode is on');
+            $('#pubMode').html('<i class="icon-eye-open"></i> Public/Unpublic mode is off');
         }
     } else if ($(this).prop('id') == 'pubMode') {
         if(masterMode == 1){
             masterMode = 0;
-            $(this).html('Public/Unpublic mode is off');
+            $(this).html('<i class="icon-eye-open"></i> Public/Unpublic mode is off');
         } else if (masterMode == 0 || masterMode == 2) {
             console.log('1');
             masterMode = 1;
-            $(this).html('Public/Unpublic mode is on');
-            $('#delMode').html('Delete mode is off');
+            $(this).html('<i class="icon-eye-open"></i> Public/Unpublic mode is on');
+            $('#delMode').html('<i class="icon-trash"></i> Delete mode is off');
         }   
     }
 });
