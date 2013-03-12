@@ -173,42 +173,71 @@ onDestroy:function () {
     $('<div>').simpledialog2({
         mode: 'button',
         zindex: '9999',
-        buttonPrompt: 'Really delete this photo?',
+        buttonPrompt: 'Really delete this photo?<br/><a class="btn btn-primary" id="confirmDeletion" style="color:#fff;"><i class="icon-ok icon-white"></i> Confirm</a><a class="btn" id="cancelDeletion" style="color:#444;"><i class="icon-remove"></i>Cancel</a>',
         buttons: {
             'Confirm': {
                 click: function () {
-                    modelId = newThis.model.get('id');
-                    link = newThis.model.get('link');
-                    thumblink = newThis.model.get('thumblink');
-                    var el = newThis.$el;
-                    newThis.model.destroy({
-                        headers:{
-                            'id' : modelId,
-                            'link' : link,
-                            'thumblink' : thumblink,
-                        },
-                        success: function(removed_person, data) {
-                            $(el).hide();
-                        },
-                        error: function(aborted_person, response) {
-                            console.log(aborted_person);
-                            console.log(response);
-                            // Error handling as needed.
-                        }
-                    }); 
+
                 },
-                theme: 'b'
             },
             'Cancel': {
                 click: function () {
-                    // Do nothing, cancel deletion       
+                
                 },
-                icon: 'delete',
-                theme: 'c'
             },
         }
-    }) 
+    })
+    this.cssDeleteFix(newThis)
 },
+
+cssDeleteFix:function (a) {
+    $('.ui-simpledialog-controls').remove();
+    $('#confirmDeletion').click(function () {
+        modelId = a.model.get('id');
+        link = a.model.get('link');
+        thumblink = a.model.get('thumblink');
+        var el = a.$el;
+        a.model.destroy({
+            headers:{
+                'id' : modelId,
+                'link' : link,
+                'thumblink' : thumblink,
+            },
+            success: function(removed_person, data) {
+                $(el).hide();
+            },
+            error: function(aborted_person, response) {
+                console.log(aborted_person);
+                console.log(response);
+                // Error handling as needed.
+            }
+        });
+        $('.ui-simpledialog-screen').fadeOut(400);
+        $('.ui-simpledialog-container').remove();
+        $('.ui-dialog').fadeOut(400);
+        setTimeout(function () {
+            $('.ui-simpledialog-screen').remove();
+            $('.ui-dialog').remove();
+        }, 400);
+    });
+    $('#cancelDeletion').click(function () {
+        $('.ui-simpledialog-screen').fadeOut(400);
+        $('.ui-simpledialog-container').remove();
+        $('.ui-dialog').fadeOut(400);
+        setTimeout(function () {
+            $('.ui-simpledialog-screen').remove();
+            $('.ui-dialog').remove();
+        }, 400);
+    });
+},
+
+
+
+
+
+
+
+
 
 onChangePublic:function () {
     $.mobile.loading( 'show' );
