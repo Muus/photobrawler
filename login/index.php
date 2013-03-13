@@ -7,7 +7,9 @@
 <body>
 	<div class="container" id="yesss" data-role="page">
 		<div class="topBanner" data-role="header">
-			PhotoBrawler
+			<div class="logo">
+				<center>PhotoBrawler</center>
+			</div>
 
             <?php if(isset($_SESSION['email'])){
                 echo 'Logged in';
