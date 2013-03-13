@@ -283,23 +283,21 @@ GalleryView = Backbone.View.extend({
 }});
     },
 });
-tempIfLoggedIn = '<p>Name: <input name="email" type="email" value="<%= email %>"></p>'
+tempIfLoggedIn = '<h3>Tap to change information</h3>'
+    +'<p>Email: <input name="email" type="email" value="<%= email %>"></p>'
     +'<p>Phonenumber: <input name="phonenumber" value="<%= phonenumber %>"></p>'
     +'<p>Street address: <input name="street_address" value="<%= street_address %>"></p>'
-    +'<p>Postal Code: <input name="postal_code" type="" value="<%= postal_code %>"></p>'
     +'<p>City: <input name="city" type="" value="<%= city %>"></p>'
-    +'<p>Province: <input name="province" type="" value="<%= province %>"></p>'
-    +'<p>State: <input name="state" type="" value="<%= state %>"></p>'
+    +'<p>Postal Code: <input name="postal_code" type="" value="<%= postal_code %>"></p>'
     +'<p>Country: <input name="country" type="" value="<%= country %>"></p>'
     +'<p>Info: <input name="info" type="" value="<%= info %>"></p>';
 
-tempIfNot = '<p>Name: <%= email %></p>'
+tempIfNot = '<h3>Info</h3>'
+    +'<p>Email: <%= email %></p>'
     +'<p>Phonenumber: <%= phonenumber %></p>'
     +'<p>Street address: <%= street_address %></p>'
-    +'<p>Postal Code: <%= postal_code %></p>'
     +'<p>City: <%= city %></p>'
-    +'<p>Province: <%= province %></p>'
-    +'<p>State: <%= state %></p>'
+    +'<p>Postal Code: <%= postal_code %></p>'
     +'<p>Country: <%= country %></p>'
     +'<p>Info: <%= info %></p>';
 //Accountmodel n collection
