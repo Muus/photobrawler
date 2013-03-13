@@ -17,8 +17,8 @@ if ($mysqli->connect_errno) {
 	echo 'Failed to connect to MySQL: (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error;
 } else {
 	
-	$email = cleaner($_POST['email']);
-	$password = cleaner($_POST['password']);
+	$email = $_POST['email'];
+	$password = $_POST['password'];
 
 	$stmt = $mysqli->prepare('
 		SELECT email, password, id FROM accounts
@@ -26,7 +26,7 @@ if ($mysqli->connect_errno) {
 	');
 	
 	$stmt->bind_param('ss', $email, $password);
-	echo 'email: ' . $email . '<br/>';
+	
 	//echo 'password: ' . $password . '<br/>';
 	if ($stmt->execute()) {
 		$stmt->bind_result($col1, $col2, $col3);

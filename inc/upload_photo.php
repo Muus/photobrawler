@@ -8,13 +8,13 @@ $new_filename = str_replace(" ", "_", $new_filename);
 
 $target_path = "../uploads/photos/";
 $target_path = $target_path . $new_filename;
-echo '$target_path: ' . $target_path . '<br/>';
+//echo '$target_path: ' . $target_path . '<br/>';
 if (file_exists("photos/" . $_FILES['photo']['name'])) {
-    echo 'A file with that name already exists!';
+    //echo 'A file with that name already exists!';
 } else {
     if (move_uploaded_file($_FILES['photo']['tmp_name'], $target_path)) {
-        echo "path: " . $target_path . "<br/>";
-        echo "The file " . basename($_FILES['photo']['name']) . " has been uploaded.";
+        //echo "path: " . $target_path . "<br/>";
+        //echo "The file " . basename($_FILES['photo']['name']) . " has been uploaded.";
 
         $x = $new_filename;
         $y = "2";
@@ -43,6 +43,7 @@ if (file_exists("photos/" . $_FILES['photo']['name'])) {
     } else {
     
     	// Error codes, not in use at the moment.
+    
         echo "There was an error uploading the file, please try again!<br/>";
         echo "error_code = ";
         if ($_FILES['photo']['error'] == 1) {
