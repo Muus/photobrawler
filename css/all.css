@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* ==========================================================================
    Display definitions
    ========================================================================== */
@@ -572,6 +573,10 @@ ul.icons {
   margin-top: 40px; }
 
 .photoGrid img {
+  -moz-box-shadow: 0px 0px 2px black;
+  -webkit-box-shadow: 0px 0px 2px black;
+  box-shadow: 0px 0px 2px black;
+  float: left;
   margin: 2px; }
 
 article {
